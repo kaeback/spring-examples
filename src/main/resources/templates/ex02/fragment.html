@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>템플릿 조각</title>
+</head>
+<body>
+<h2>13. 템플릿 조각 (Fragment)</h2>
+
+<!--
+  ⚠️ 조각 표현식은 반드시 ~{...} 로 감싼다 (Thymeleaf 3.1).
+     th:replace="ex02/footer :: copy"  ← 감싸지 않은 옛 문법은 폐기(deprecated) → 경고 발생
+     th:include 도 폐기됨 → th:insert / th:replace 사용
+-->
+
+<h3>th:insert — 현재 태그 '안에' 조각을 삽입</h3>
+<div th:insert="~{ex02/footer :: copy}"></div>
+
+<h3>th:replace — 현재 태그를 조각으로 '대체'</h3>
+<div th:replace="~{ex02/footer :: copy}"></div>
+
+<h3>파라미터 전달</h3>
+<div th:replace="~{ex02/footer :: copyParam('데이터1', '데이터2')}"></div>
+
+<a th:href="@{/ex02}">목록으로</a>
+</body>
+</html>

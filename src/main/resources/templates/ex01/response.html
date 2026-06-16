@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>뷰 템플릿 응답</title>
+</head>
+<body>
+<h2>② 뷰 템플릿 응답</h2>
+<!-- 컨트롤러가 Model 에 담은 message 를 출력 -->
+<p th:text="${message}">여기에 메시지가 출력됩니다.</p>
+<p>컨트롤러는 <code>@ResponseBody</code> 없이 뷰 이름 <code>"ex01/response"</code> 를 반환했고,
+   ViewResolver 가 이 템플릿을 찾아 렌더링했습니다.</p>
+<a th:href="@{/}">홈으로</a>
+</body>
+</html>

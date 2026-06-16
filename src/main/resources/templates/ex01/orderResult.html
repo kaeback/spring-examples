@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>주문 완료</title>
+</head>
+<body>
+<h2>주문 완료</h2>
+<!-- orderId: 경로 변수 → 모델에 담음 / item: redirect flash attribute(1회성) -->
+<p>주문 번호: <span th:text="${orderId}">0</span></p>
+<p>상품: <span th:text="${item}">상품</span></p>
+<p style="color:gray;">이 페이지는 GET 요청이라, 새로고침해도 주문(POST)이 다시 일어나지 않습니다. (PRG 패턴)</p>
+<a th:href="@{/ex01/order}">다시 주문</a> · <a th:href="@{/}">홈으로</a>
+</body>
+</html>

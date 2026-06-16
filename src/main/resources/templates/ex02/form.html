@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>th:field 폼</title>
+    <style>
+        body { font-family: sans-serif; max-width: 600px; margin: 24px auto; line-height: 1.8; }
+        fieldset { margin: 10px 0; }
+        .result { background:#f1f8e9; border:1px solid #c5e1a5; padding:10px 14px; border-radius:6px; }
+    </style>
+</head>
+<body>
+<h2>th:field 로 폼 그리기</h2>
+<p>아래 폼은 컨트롤러가 미리 채워 둔 값(홍길동/실버/Java·Python/부산/동의)이 <b>자동 선택</b>되어 있습니다.</p>
+
+<!-- th:object 로 폼 객체를 지정하면, 이후 *{필드} 로 접근하고 th:field 가 name/id/value/checked/selected 를 자동 처리 -->
+<form th:object="${surveyForm}" th:action="@{/ex02/form}" method="post">
+
+    <fieldset>
+        <legend>이름</legend>
+        <input type="text" th:field="*{name}">
+    </fieldset>
+
+    <fieldset>
+        <legend>등급 (라디오)</legend>
+        <!-- th:field 가 *{grade} 와 같은 값의 라디오를 자동으로 checked 처리 -->
+        <label th:each="opt : ${gradeOptions}">
+            <input type="radio" th:field="*{grade}" th:value="${opt}">
+            <span th:text="${opt}">등급</span>
+        </label>
+    </fieldset>
+
+    <fieldset>
+        <legend>관심 언어 (체크박스 다중)</legend>
+        <!-- *{langs} 리스트에 포함된 값들이 자동으로 checked -->
+        <label th:each="opt : ${langOptions}">
+            <input type="checkbox" th:field="*{langs}" th:value="${opt}">
+            <span th:text="${opt}">언어</span>
+        </label>
+    </fieldset>
+
+    <fieldset>
+        <legend>도시 (select)</legend>
+        <select th:field="*{city}">
+            <!-- *{city} 와 같은 option 이 자동으로 selected -->
+            <option th:each="opt : ${cityOptions}" th:value="${opt}" th:text="${opt}">도시</option>
+        </select>
+    </fieldset>
+
+    <fieldset>
+        <legend>약관 (단일 체크박스 = 불린)</legend>
+        <label><input type="checkbox" th:field="*{agree}"> 동의합니다</label>
+    </fieldset>
+
+    <button type="submit">제출</button>
+</form>
+
+<!-- 제출 후에만 표시: 서버가 받은 값 -->
+<div class="result" th:if="${result != null}">
+    <h3>제출 결과 (서버가 받은 값)</h3>
+    <p>이름: <span th:text="${result.name}"></span></p>
+    <p>등급: <span th:text="${result.grade}"></span></p>
+    <p>관심 언어: <span th:text="${#strings.listJoin(result.langs, ', ')}"></span></p>
+    <p>도시: <span th:text="${result.city}"></span></p>
+    <p>약관 동의: <span th:text="${result.agree}"></span></p>
+</div>
+
+<p><a th:href="@{/ex02}">타임리프 실습 목록</a></p>
+</body>
+</html>

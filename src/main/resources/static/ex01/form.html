@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>요청 파라미터 바인딩 폼</title>
+    <style>
+        body { font-family: sans-serif; max-width: 560px; margin: 24px auto; line-height: 1.9; }
+        fieldset { margin: 10px 0; }
+        button { padding: 6px 12px; margin-right: 8px; }
+    </style>
+</head>
+<body>
+<h2>요청 파라미터 바인딩 — select / radio / checkbox</h2>
+<p>이 파일은 <code>src/main/resources/static</code> 의 <b>정적 리소스</b>입니다(응답 방식 ①).</p>
+
+<!-- method=post. action 은 아래 버튼의 formaction 으로 분기한다 -->
+<form method="post">
+    <fieldset>
+        <legend>이름 (텍스트, 단일)</legend>
+        <input type="text" name="name" value="홍길동">
+    </fieldset>
+
+    <fieldset>
+        <legend>성별 (라디오, 하나만 선택 → 단일 값)</legend>
+        <label><input type="radio" name="gender" value="M" checked> 남</label>
+        <label><input type="radio" name="gender" value="F"> 여</label>
+    </fieldset>
+
+    <fieldset>
+        <legend>취미 (체크박스, 여러 개 → 배열/List)</legend>
+        <label><input type="checkbox" name="hobbies" value="독서" checked> 독서</label>
+        <label><input type="checkbox" name="hobbies" value="게임"> 게임</label>
+        <label><input type="checkbox" name="hobbies" value="운동" checked> 운동</label>
+        <label><input type="checkbox" name="hobbies" value="영화"> 영화</label>
+    </fieldset>
+
+    <fieldset>
+        <legend>관심 도시 (다중 select, Ctrl/Shift 로 여러 개 → 배열/List)</legend>
+        <select name="cities" multiple size="4">
+            <option value="서울" selected>서울</option>
+            <option value="부산">부산</option>
+            <option value="대구" selected>대구</option>
+            <option value="광주">광주</option>
+        </select>
+    </fieldset>
+
+    <!-- 같은 입력을 두 가지 방식으로 전송해 결과(JSON)를 비교한다 -->
+    <button type="submit" formaction="/ex01/bind">@RequestParam (List) 로 받기</button>
+    <button type="submit" formaction="/ex01/signup">@ModelAttribute (객체) 로 받기</button>
+</form>
+
+<p style="color:gray;">
+    제출하면 서버가 받은 값을 JSON 으로 보여 줍니다.
+    취미·도시처럼 여러 개 선택한 항목이 <b>배열</b>로 들어오는 것을 확인하세요.<br>
+    체크박스를 <b>모두 해제</b>하고 제출하면 그 항목은 아예 전송되지 않아 <code>[]</code>(빈 배열)로 처리됩니다.
+</p>
+</body>
+</html>

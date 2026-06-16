@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>등록 완료</title>
+</head>
+<body>
+<h2>회원 등록 완료</h2>
+<!-- redirect 시 addFlashAttribute 로 넘어온 1회성 값. 새로고침하면 사라진다. -->
+<p><span th:text="${savedName}">이름</span> 님이 등록되었습니다.</p>
+<a th:href="@{/ex03/members/add}">다시 등록하기</a>
+</body>
+</html>

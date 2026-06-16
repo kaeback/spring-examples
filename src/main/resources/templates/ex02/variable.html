@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>변수 표현식</title>
+</head>
+<body>
+<h2>3. 변수 표현식 ${...}</h2>
+
+<h3>Object</h3>
+<ul>
+    <li>${user.username} = <span th:text="${user.username}"></span></li>
+    <li>${user['username']} = <span th:text="${user['username']}"></span></li>
+</ul>
+
+<h3>List</h3>
+<ul>
+    <li>${users[0].username} = <span th:text="${users[0].username}"></span></li>
+    <li>${users[1].age} = <span th:text="${users[1].age}"></span></li>
+</ul>
+
+<h3>Map</h3>
+<ul>
+    <li>${userMap['userA'].username} = <span th:text="${userMap['userA'].username}"></span></li>
+</ul>
+
+<h3>지역 변수 th:with</h3>
+<!-- th:with 로 만든 지역 변수는 해당 태그 '안에서만' 유효하다 -->
+<div th:with="first=${users[0]}">
+    <p>처음 사람의 이름은 <span th:text="${first.username}"></span></p>
+</div>
+
+<h2>5. 날짜 유틸리티 (#temporals)</h2>
+<ul>
+    <li>기본 = <span th:text="${now}"></span></li>
+    <li>포맷 = <span th:text="${#temporals.format(now, 'yyyy-MM-dd HH:mm:ss')}"></span></li>
+    <li>년 = <span th:text="${#temporals.year(now)}"></span></li>
+    <li>요일 = <span th:text="${#temporals.dayOfWeekName(now)}"></span></li>
+</ul>
+
+<a th:href="@{/ex02}">목록으로</a>
+</body>
+</html>

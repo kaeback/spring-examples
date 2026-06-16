@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<!--
+  공통 레이아웃 조각. common_header(title, links) 처럼 파라미터를 받아,
+  페이지마다 다른 title 과 추가 link 들을 끼워 넣는다.
+-->
+<head th:fragment="common_header(title, links)">
+    <meta charset="UTF-8">
+    <!-- 전달받은 title 조각으로 이 <title>을 대체 -->
+    <title th:replace="${title}">기본 레이아웃 타이틀</title>
+
+    <!-- 공통 CSS (모든 페이지 공유) -->
+    <link rel="stylesheet" th:href="@{/css/common.css}">
+
+    <!-- 전달받은 추가 link 조각들을 이 자리에 끼워 넣음 -->
+    <th:block th:replace="${links}"/>
+</head>
+<body>
+</body>
+</html>

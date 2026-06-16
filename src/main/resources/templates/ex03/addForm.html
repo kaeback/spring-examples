@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<!-- 타임리프 사용 선언 (xmlns:th) -->
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>회원 등록 (검증 실습)</title>
+    <style>
+        /* th:errorclass 로 자동 부여되는 클래스 — 오류 입력칸을 빨갛게 */
+        .field-error { border-color: #dc3545; color: #dc3545; }
+        .field-error-msg { color: #dc3545; font-size: 0.9em; }
+        label { display: inline-block; width: 60px; }
+        label.inline { width: auto; margin-right: 10px; }
+        div { margin: 6px 0; }
+    </style>
+</head>
+<body>
+<h2>회원 등록</h2>
+
+<!-- th:object: 이 폼이 다루는 모델 객체. 이후 *{필드} 는 memberForm.필드 를 의미 -->
+<form th:object="${memberForm}" th:action="@{/ex03/members/add}" method="post">
+
+    <!-- 글로벌 오류(특정 필드가 아닌 오류: bindingResult.reject) 표시.
+         #fields 는 th:object 가 있는 <form> '안에서만' 동작하므로 폼 내부에 둔다. -->
+    <div th:if="${#fields.hasGlobalErrors()}">
+        <p class="field-error-msg" th:each="err : ${#fields.globalErrors()}" th:text="${err}">전체 오류</p>
+    </div>
+
+    <div>
+        <label for="name">이름</label>
+        <!-- th:field: name/id/value 를 *{name} 에 맞춰 자동 설정. th:errorclass: 오류 시 class 추가 -->
+        <input type="text" id="name" th:field="*{name}" th:errorclass="field-error">
+        <!-- th:errors: 해당 필드에 오류가 있을 때만 메시지 출력 -->
+        <span class="field-error-msg" th:errors="*{name}">이름 오류</span>
+    </div>
+
+    <div>
+        <label for="age">나이</label>
+        <input type="text" id="age" th:field="*{age}" th:errorclass="field-error">
+        <span class="field-error-msg" th:errors="*{age}">나이 오류</span>
+    </div>
+
+    <div>
+        <label for="email">이메일</label>
+        <input type="text" id="email" th:field="*{email}" th:errorclass="field-error">
+        <span class="field-error-msg" th:errors="*{email}">이메일 오류</span>
+    </div>
+
+    <div>
+        <label for="phone">전화</label>
+        <input type="text" id="phone" th:field="*{phone}" th:errorclass="field-error"
+               placeholder="010-0000-0000">
+        <span class="field-error-msg" th:errors="*{phone}">전화 오류</span>
+    </div>
+
+    <div>
+        <label>관심분야</label>
+        <!-- 체크박스 다중 → List<String> interests 에 바인딩. th:field 가 선택 상태를 관리 -->
+        <label class="inline" th:each="opt : ${interestOptions}">
+            <input type="checkbox" th:field="*{interests}" th:value="${opt}">
+            <span th:text="${opt}">분야</span>
+        </label>
+        <span class="field-error-msg" th:errors="*{interests}">관심분야 오류</span>
+    </div>
+
+    <div>
+        <label>약관</label>
+        <!-- 단일 체크박스(불린) → @AssertTrue 로 '필수 동의' 검증 -->
+        <label class="inline"><input type="checkbox" th:field="*{agree}"> 동의합니다</label>
+        <span class="field-error-msg" th:errors="*{agree}">약관 오류</span>
+    </div>
+
+    <button type="submit">등록</button>
+</form>
+
+<p>일부러 비워 두거나 형식을 틀리게 입력하고 [등록]을 눌러 검증 오류를 확인해 보세요.</p>
+</body>
+</html>

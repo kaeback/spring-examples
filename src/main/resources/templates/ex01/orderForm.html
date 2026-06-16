@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>주문 (PRG 테스트)</title>
+</head>
+<body>
+<h2>주문하기</h2>
+<!-- th:action 으로 폼 전송 경로 생성. POST 로 /ex01/order 호출 → 서버가 redirect(PRG) -->
+<form th:action="@{/ex01/order}" method="post">
+    <input name="item" value="키보드">
+    <button type="submit">주문 (PRG 테스트)</button>
+</form>
+<p>주문 후 결과 페이지에서 <b>새로고침(F5)</b> 해도 중복 주문되지 않는 것을 확인해 보세요.</p>
+<a th:href="@{/}">홈으로</a>
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Spring Boot 웹 개발 실습</title>
+    <style>
+        body { font-family: sans-serif; max-width: 760px; margin: 30px auto; line-height: 1.7; }
+        h1 { border-bottom: 2px solid #4caf50; padding-bottom: 6px; }
+        section { margin-bottom: 18px; }
+        code { background: #f3f3f3; padding: 1px 5px; border-radius: 3px; }
+        a { color: #2e7d32; }
+        .n { color:#888; font-weight:bold; margin-right:4px; }
+    </style>
+</head>
+<body>
+<h1>Spring Boot 웹 개발 실습</h1>
+<p>강의 순서대로 정리한 패키지별 예제입니다.</p>
+
+<section>
+    <h3><span class="n">01</span> 요청과 응답 <code>web01</code></h3>
+    <ul>
+        <li><a th:href="@{/ex01/members}">요청 매핑</a> ·
+            <a th:href="@{/ex01/hello(username=kim,age=20)}">@RequestParam</a> ·
+            <a th:href="@{/ex01/model(id=1,name=kim,age=20)}">@ModelAttribute(JSON)</a></li>
+        <li>응답: <a th:href="@{/ex01/response/view}">뷰 템플릿</a> ·
+            <a th:href="@{/ex01/response/json}">JSON</a> ·
+            <a th:href="@{/ex01/order}">Forward/Redirect (PRG)</a></li>
+        <li>파라미터 바인딩 심화: <a th:href="@{/ex01/form.html}">폼(select·radio·checkbox → 배열)</a> ·
+            <a th:href="@{/ex01/multi(tag=java,tag=spring)}">MultiValueMap</a></li>
+    </ul>
+</section>
+
+<section>
+    <h3><span class="n">02</span> Thymeleaf <code>web02</code></h3>
+    <ul>
+        <li><a th:href="@{/ex02}">타임리프 실습 목록</a> (출력·반복·조건·조각·레이아웃)</li>
+    </ul>
+</section>
+
+<section>
+    <h3><span class="n">03</span> 검증과 쿠키·세션 <code>web03</code></h3>
+    <ul>
+        <li><a th:href="@{/ex03/members/add}">Bean Validation 폼</a></li>
+        <li><a th:href="@{/ex03/state}">쿠키·세션 상태 화면</a></li>
+    </ul>
+</section>
+
+<section>
+    <h3><span class="n">04</span> JPA 기초 <code>web04</code></h3>
+    <ul>
+        <li>영속성 컨텍스트·1차 캐시·변경 감지 데모 → <b>앱 시작 시 콘솔에 자동 출력</b> (SQL 로그와 함께)</li>
+    </ul>
+</section>
+
+<section>
+    <h3><span class="n">05</span> Spring Data JPA <code>web05</code></h3>
+    <ul>
+        <li>쿼리 메소드·페이징·N+1·DTO 데모 → <b>앱 시작 시 콘솔에 자동 출력</b></li>
+        <li><a th:href="@{/ex05/members}">회원 목록(DTO)</a> ·
+            <a th:href="@{/ex05/members/page(keyword=kim,page=0,size=5,sort='id,desc')}">페이징 API</a></li>
+        <li><a th:href="@{/h2-console}">H2 콘솔</a> (JDBC URL: <code>jdbc:h2:mem:testdb</code>)</li>
+    </ul>
+</section>
+
+<section>
+    <h3><span class="n">06</span> 필터·인터셉터·예외 처리 <code>web06</code></h3>
+    <ul>
+        <li><a th:href="@{/ex06/open}">공개</a> ·
+            <a th:href="@{/ex06/secure/data}">인터셉터 보호</a> ·
+            <a th:href="@{/ex06/filter-secure/data}">필터 보호</a> ·
+            <a th:href="@{/ex06/login}">로그인</a></li>
+        <li>예외: <a th:href="@{/ex06/api/members/1}">정상</a> ·
+            <a th:href="@{/ex06/api/members/101}">400</a> ·
+            <a th:href="@{/ex06/api/boom}">500</a></li>
+    </ul>
+</section>
+
+<section>
+    <h3><span class="n">07</span> 파일·페이징 <code>web07</code></h3>
+    <ul>
+        <li><a th:href="@{/ex07/upload}">파일 업로드/다운로드</a></li>
+        <li><a th:href="@{/ex07/paging(page=2,size=10)}">페이징 계산(LIMIT/OFFSET)</a></li>
+    </ul>
+</section>
+</body>
+</html>

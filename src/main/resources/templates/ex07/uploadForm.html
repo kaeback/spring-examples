@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>파일 업로드</title>
+</head>
+<body>
+<h2>파일 업로드</h2>
+
+<!-- 파일 전송은 반드시 enctype="multipart/form-data" -->
+<form th:action="@{/ex07/upload}" method="post" enctype="multipart/form-data">
+    <input type="file" name="file">
+    <button type="submit">단일 업로드</button>
+</form>
+
+<!-- 다중 업로드: input 에 multiple, name 은 컨트롤러의 List<MultipartFile> files 와 동일 -->
+<form th:action="@{/ex07/upload-multi}" method="post" enctype="multipart/form-data">
+    <input type="file" name="files" multiple>
+    <button type="submit">다중 업로드</button>
+</form>
+
+<h3>업로드된 파일 목록</h3>
+<ul>
+    <!-- 표시는 원본명(originalName), 다운로드 링크는 저장명(storeName) -->
+    <li th:each="f : ${files}">
+        <a th:href="@{/ex07/download/{store}(store=${f.storeName})}"
+           th:text="${f.originalName}">파일명</a>
+        <span th:text="'(저장명: ' + ${f.storeName} + ')'" style="color:gray; font-size:0.85em;"></span>
+    </li>
+</ul>
+<p th:if="${files.isEmpty()}">아직 업로드된 파일이 없습니다.</p>
+</body>
+</html>

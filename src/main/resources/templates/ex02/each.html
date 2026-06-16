@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>반복과 조건</title>
+    <style>table, th, td { border: 1px solid #ccc; border-collapse: collapse; padding: 4px 8px; }</style>
+</head>
+<body>
+<h2>9. 반복 th:each (+ 반복 상태)</h2>
+<table>
+    <tr><th>count</th><th>username</th><th>age</th><th>even?</th></tr>
+    <!-- user : 현재 요소, userStat : 반복 상태(count, index, even/odd, first/last, size 등) -->
+    <tr th:each="user, userStat : ${users}">
+        <td th:text="${userStat.count}">1</td>
+        <td th:text="${user.username}">username</td>
+        <td th:text="${user.age}">0</td>
+        <td th:text="${userStat.even}">false</td>
+    </tr>
+</table>
+
+<h2>10. 조건부 평가</h2>
+<ul>
+    <li th:each="user : ${users}">
+        <span th:text="${user.username}"></span> -
+        <!-- th:if 조건이 거짓이면 태그 자체가 렌더링되지 않는다 -->
+        <span th:text="'성인'" th:if="${user.age ge 20}"></span>
+        <span th:text="'미성년자'" th:unless="${user.age ge 20}"></span>
+        /
+        <!-- th:switch / th:case (* = default) -->
+        <span th:switch="${user.age}">
+            <span th:case="10">열 살</span>
+            <span th:case="20">스무 살</span>
+            <span th:case="*">기타 나이</span>
+        </span>
+    </li>
+</ul>
+
+<h2>11. th:block 으로 묶음 처리</h2>
+<!-- <th:block> 은 화면에 남지 않는 타임리프 전용 태그. 반복에서 여러 태그를 묶을 때 유용 -->
+<th:block th:each="user : ${users}">
+    <div>이름: <span th:text="${user.username}"></span></div>
+    <div>요약: <span th:text="${user.username} + ' / ' + ${user.age}"></span></div>
+    <hr/>
+</th:block>
+
+<a th:href="@{/ex02}">목록으로</a>
+</body>
+</html>
