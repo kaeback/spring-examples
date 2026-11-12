@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * [교안 2] 엔티티 매핑.
+ * [교안 2.1] 엔티티 매핑.
  *
  * <p>테이블과 매핑되는 클래스를 '엔티티'라고 한다.
  * 변경 감지(dirty checking) 실습을 위해 @Setter 를 열어 두었지만,
@@ -35,7 +35,7 @@ public class Member {
     private Role role;
 
     /**
-     * [교안 7] 양방향 연관관계의 '주인이 아닌' 쪽.
+     * [교안 2.7] 양방향 연관관계의 '주인이 아닌' 쪽.
      * 실제 FK(member_id)는 Order 가 가지므로, 여기서는 mappedBy 로 '읽기 전용 거울'임을 표시한다.
      * (이 컬렉션에만 add 하고 Order.member 를 안 넣으면 FK 가 저장되지 않으니 주의)
      */

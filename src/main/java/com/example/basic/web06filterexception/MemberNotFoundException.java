@@ -1,7 +1,7 @@
 package com.example.basic.web06filterexception;
 
 /**
- * [교안 11 심화] 도메인(업무) 의미를 담은 커스텀 예외.
+ * [교안 2.6 심화] 도메인(업무) 의미를 담은 커스텀 예외.
  *
  * <p>"회원을 못 찾음" 같은 업무 상황을 IllegalArgumentException 대신 전용 예외로 표현하면,
  * @ExceptionHandler 에서 상황별로 알맞은 상태코드(404)와 메시지로 변환하기 쉽다.

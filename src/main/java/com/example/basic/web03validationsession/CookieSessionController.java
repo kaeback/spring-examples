@@ -8,8 +8,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.Instant;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+
 /**
- * [교안 9] 쿠키와 세션 — 상태를 한 화면(Thymeleaf)에서 확인한다.
+ * [교안 쿠키·세션 2.1~2.3] 쿠키와 세션 — 상태를 한 화면(Thymeleaf)에서 확인한다.
  *
  * <p>HTTP 는 무상태(stateless)라 요청 간 상태를 기억하지 못한다.
  *  - 쿠키 : 서버가 Set-Cookie 로 내려보내면 브라우저가 저장했다가 요청마다 보냄. 클라이언트 저장 → 보안 취약.
@@ -78,5 +82,27 @@ public class CookieSessionController {
             session.invalidate();    // null 체크 후 무효화 (NPE 방지)
         }
         return "redirect:/ex03/state";
+    }
+
+    /**
+     * [교안 쿠키·세션 2.3] 세션 정보 — 서버가 세션을 어떻게 관리하는지 들여다본다.
+     * getSession(false)로 '조회만' 하므로, 세션이 없으면 새로 만들지 않고 "세션 없음"을 보여 준다.
+     */
+    @GetMapping("/session/info")
+    public String sessionInfo(HttpServletRequest request, Model model) {
+        HttpSession session = request.getSession(false);
+        if (session != null) {
+            model.addAttribute("sessionId", session.getId());                              // JSESSIONID 쿠키 값과 같다
+            model.addAttribute("maxInactiveInterval", session.getMaxInactiveInterval());   // 타임아웃(초). 기본 1800 = 30분
+            model.addAttribute("creationTime", toTime(session.getCreationTime()));         // 세션이 만들어진 시각
+            model.addAttribute("lastAccessedTime", toTime(session.getLastAccessedTime())); // 직전 요청 시각
+            model.addAttribute("loginMember", session.getAttribute("loginMember"));
+        }
+        return "ex03/session-info";
+    }
+
+    /** 밀리초(epoch) → 날짜·시각 */
+    private LocalDateTime toTime(long epochMillis) {
+        return LocalDateTime.ofInstant(Instant.ofEpochMilli(epochMillis), ZoneId.systemDefault());
     }
 }

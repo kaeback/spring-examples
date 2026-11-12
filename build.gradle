@@ -1,6 +1,6 @@
 plugins {
     id 'java'
-    id 'org.springframework.boot' version '3.5.15'
+    id 'org.springframework.boot' version '4.1.2'
     id 'io.spring.dependency-management' version '1.1.7'
 }
 
@@ -14,22 +14,36 @@ java {
     }
 }
 
+// Mockito를 JVM 에이전트로 등록 (JDK 21+에서 '동적 에이전트 로딩' 경고 제거) — 테스트 2장
+configurations {
+    mockitoAgent
+}
+
 repositories {
     mavenCentral()
 }
 
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
-    implementation 'org.springframework.boot:spring-boot-starter-web'
-    // 검증(Bean Validation) — web02 검증 실습 (@Valid, @NotBlank 등)
+    implementation 'org.springframework.boot:spring-boot-starter-webmvc'   // Boot 4: 옛 starter-web
+    // 검증(Bean Validation) — web03 검증 실습 (@Valid, @NotBlank 등)
     implementation 'org.springframework.boot:spring-boot-starter-validation'
-    // Spring Data JPA — web06 JPA 기초, web07 Spring Data JPA 실습
+    // Spring Data JPA — web04 JPA 기초, web05 Spring Data JPA 실습
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     // H2 인메모리 DB — 별도 DB 설치 없이 JPA 실습 (애플리케이션 종료 시 데이터 사라짐)
     runtimeOnly 'com.h2database:h2'
+    // Boot 4: H2 웹 콘솔(/h2-console)이 별도 모듈로 분리되었다
+    implementation 'org.springframework.boot:spring-boot-h2console'
+    // Spring Security — web10 시큐리티 실습 (보안은 /ex10/** 에만 건다: Ex10SecurityConfig 의 securityMatcher)
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+    // 타임리프에서 sec: 네임스페이스 사용 (Security 7에서도 이름은 springsecurity6)
+    implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity6'
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
-    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'org.springframework.boot:spring-boot-starter-webmvc-test'   // Boot 4: 기술별 테스트 스타터
+    testImplementation 'org.springframework.boot:spring-boot-starter-security-test'  // web10: @WithMockUser 등
+    testImplementation 'org.springframework.boot:spring-boot-starter-data-jpa-test' // @DataJpaTest — 테스트 2장
+    mockitoAgent('org.mockito:mockito-core') { transitive = false }                  // 버전은 부트가 관리 — 테스트 2장
     testCompileOnly 'org.projectlombok:lombok'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
     testAnnotationProcessor 'org.projectlombok:lombok'
@@ -37,4 +51,9 @@ dependencies {
 
 tasks.named('test') {
     useJUnitPlatform()
+    jvmArgs += "-javaagent:${configurations.mockitoAgent.asPath}"   // 테스트 2장
+    testLogging {                                                   // 테스트 1장: 결과를 콘솔에 보기
+        events 'passed', 'skipped', 'failed'
+        exceptionFormat = 'full'
+    }
 }

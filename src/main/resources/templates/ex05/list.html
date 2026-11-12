@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<!-- [교안 2.5] Page 객체로 목록과 페이지 블록 네비게이션을 그린다 -->
+<head>
+    <meta charset="UTF-8">
+    <title>회원 목록</title>
+    <style>.active { font-weight: bold; }</style>
+</head>
+<body>
+<h1>회원 목록</h1>
+<table border="1">
+    <tr><th>id</th><th>이름</th><th>나이</th></tr>
+    <tr th:each="member : ${members.content}">
+        <td th:text="${member.id}">1</td>
+        <td th:text="${member.name}">이름</td>
+        <td th:text="${member.age}">20</td>
+    </tr>
+</table>
+
+<p th:text="|${members.number + 1} / ${members.totalPages} 페이지 (전체 ${members.totalElements}명)|">1 / 8 페이지</p>
+
+<nav>
+    <!-- 이전 '블록'이 있을 때만 (첫 블록이면 숨김) -->
+    <a th:if="${startPage > 0}"
+       th:href="@{/ex05/members/list(page=${startPage - 1}, keyword=${keyword})}">이전</a>
+
+    <!-- startPage ~ endPage-1 번호 출력 (데이터가 없으면 endPage == 0 이라 출력하지 않음) -->
+    <th:block th:if="${endPage > startPage}">
+        <span th:each="i : ${#numbers.sequence(startPage, endPage - 1)}">
+            <a th:href="@{/ex05/members/list(page=${i}, keyword=${keyword})}"
+               th:text="${i + 1}"
+               th:classappend="${i == members.number} ? 'active'">1</a>
+        </span>
+    </th:block>
+
+    <!-- 다음 '블록'이 있을 때만 (마지막 블록이면 숨김) -->
+    <a th:if="${endPage < members.totalPages}"
+       th:href="@{/ex05/members/list(page=${endPage}, keyword=${keyword})}">다음</a>
+</nav>
+</body>
+</html>

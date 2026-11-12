@@ -11,16 +11,16 @@ import java.util.Map;
 import java.util.stream.IntStream;
 
 /**
- * [교안 12] 페이징 — 페이지 번호를 OFFSET 으로 바꾸는 '계산'을 직접 해 본다.
+ * [교안 2.4] 페이징 — 페이지 번호를 OFFSET 으로 바꾸는 '계산'을 직접 해 본다.
  *
  * <p>DB 없이 메모리 리스트로 페이징 공식을 체험하는 예제다. 실제 SQL 은 다음과 같다:
- *   SELECT * FROM items ORDER BY id LIMIT {size} OFFSET {offset};   (MySQL/H2)
+ *   SELECT * FROM items ORDER BY id LIMIT {size} OFFSET {offset};   (MySQL/PostgreSQL/H2)
  *
  * <p>핵심 공식:
  *   offset = (page - 1) * size                     // page 는 1부터, size 는 페이지당 개수
  *   전체 페이지 수 = ceil(전체 개수 / size)          // 올림
  *
- * <p>JPA 를 쓰면 이 계산을 Pageable 이 자동으로 해 준다 → web07 Spring Data JPA 참고.
+ * <p>JPA 를 쓰면 이 계산을 Pageable 이 자동으로 해 준다 → web05 Spring Data JPA 참고.
  *
  * 브라우저로 확인: GET http://localhost:8080/ex07/paging?page=2&size=10
  */

@@ -6,7 +6,7 @@
     <style>table, th, td { border: 1px solid #ccc; border-collapse: collapse; padding: 4px 8px; }</style>
 </head>
 <body>
-<h2>9. 반복 th:each (+ 반복 상태)</h2>
+<h2>2.6 반복 th:each (+ 반복 상태)</h2>
 <table>
     <tr><th>count</th><th>username</th><th>age</th><th>even?</th></tr>
     <!-- user : 현재 요소, userStat : 반복 상태(count, index, even/odd, first/last, size 등) -->
@@ -18,7 +18,7 @@
     </tr>
 </table>
 
-<h2>10. 조건부 평가</h2>
+<h2>2.6 조건부 평가</h2>
 <ul>
     <li th:each="user : ${users}">
         <span th:text="${user.username}"></span> -
@@ -35,7 +35,7 @@
     </li>
 </ul>
 
-<h2>11. th:block 으로 묶음 처리</h2>
+<h2>2.6 th:block 으로 묶음 처리</h2>
 <!-- <th:block> 은 화면에 남지 않는 타임리프 전용 태그. 반복에서 여러 태그를 묶을 때 유용 -->
 <th:block th:each="user : ${users}">
     <div>이름: <span th:text="${user.username}"></span></div>

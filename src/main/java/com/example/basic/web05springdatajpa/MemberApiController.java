@@ -5,6 +5,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.data.web.PagedModel;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -13,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 /**
- * [교안 6,10] REST API — 엔티티가 아니라 DTO 로 응답하고, 페이징을 요청 파라미터로 받는다.
+ * [교안 2.5, 2.9] REST API — 엔티티가 아니라 DTO 로 응답하고, 페이징을 요청 파라미터로 받는다.
  *
  * <p>시작 시 SpringDataJpaRunner 가 회원을 미리 저장해 두므로 바로 조회된다.
  *
@@ -42,11 +43,13 @@ public class MemberApiController {
      * @PageableDefault 로 파라미터가 없을 때의 기본값을 지정.
      */
     @GetMapping("/members/page")
-    public Page<MemberDto> page(
+    public PagedModel<MemberDto> page(
             @RequestParam(defaultValue = "") String keyword,
             @PageableDefault(size = 10, sort = "id", direction = Sort.Direction.DESC) Pageable pageable) {
         // Page 의 map 으로 내용물(엔티티)을 DTO 로 변환하면 페이징 메타데이터는 그대로 유지된다.
-        return memberRepository.findByNameContaining(keyword, pageable).map(MemberDto::new);
+        Page<MemberDto> page = memberRepository.findByNameContaining(keyword, pageable).map(MemberDto::new);
+        // Page 를 그대로 JSON 으로 내보내면 '구조가 바뀔 수 있다'는 경고가 출력된다 → 모양이 고정된 PagedModel 로 감싼다
+        return new PagedModel<>(page);
     }
 
     /**

@@ -3,13 +3,14 @@ package com.example.basic.web03validationsession;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.StringUtils;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 /**
- * [교안 8] Bean Validation — 화면(폼) 컨트롤러 흐름.
+ * [교안 검증 2.2] Bean Validation — 화면(폼) 컨트롤러 흐름.
  *
  * <p>핵심 패턴: @Validated(또는 @Valid) + BindingResult
  *  1) 검증 대상 파라미터 '바로 뒤'에 BindingResult 를 둔다.
@@ -50,7 +51,8 @@ public class MemberValidationController {
 
         // (특정 필드가 아닌) 복합 검증은 여기서 직접 글로벌 오류로 추가할 수도 있다.
         // 예) 이름과 이메일이 똑같으면 안 된다 같은 규칙 → bindingResult.reject(...)
-        if (form.getName() != null && form.getName().equals(form.getEmail())) {
+        // (둘 다 비어 있을 때는 이미 필드 오류가 나므로 값이 있을 때만 비교한다)
+        if (StringUtils.hasText(form.getName()) && form.getName().equals(form.getEmail())) {
             bindingResult.reject("nameEqualsEmail", "이름과 이메일은 같을 수 없습니다.");
         }
 

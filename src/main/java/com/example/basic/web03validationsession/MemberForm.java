@@ -7,7 +7,7 @@ import org.hibernate.validator.constraints.Range;
 import java.util.List;
 
 /**
- * [교안 8] Bean Validation 실습용 폼.
+ * [교안 검증 2.1] Bean Validation 실습용 폼.
  *
  * <p>요청 데이터의 유효성을 어노테이션으로 '선언적으로' 검증한다.
  * 컨트롤러에서 @Valid(또는 @Validated)를 붙여야 실제 검증이 실행된다.
@@ -15,7 +15,7 @@ import java.util.List;
  * <p><b>검증 그룹 주의점</b>: 컨트롤러에서 @Validated(SaveCheck.class) 처럼 그룹을 지정하면,
  * 그 그룹(SaveCheck)에 속한 제약만 검증한다. 그래서 그룹을 쓸 때는 각 제약에도
  * groups 를 명시해야 한다. groups 를 안 적은 제약은 'Default' 그룹에만 속해
- * SaveCheck 검증에서 빠져 버린다(= 검증이 안 되는 함정).
+ * SaveCheck 검증에서 제외된다(= 검증되지 않으니 주의).
  *
  * <p>여기서는 일반 항목을 등록·수정 양쪽 그룹에 모두 넣고, id 만 수정(UpdateCheck) 시 필수로 두었다.
  */

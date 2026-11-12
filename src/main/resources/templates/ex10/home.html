@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<!-- [교안 2.6] sec: 네임스페이스로 로그인 상태에 따라 다른 내용 보여 주기 -->
+<head>
+    <meta charset="UTF-8">
+    <title>시큐리티 실습</title>
+</head>
+<body>
+<h1>시큐리티 실습 (/ex10)</h1>
+<p th:if="${param.logout}">로그아웃되었습니다.</p>
+
+<!-- 로그인하지 않은 사용자에게만 -->
+<div sec:authorize="isAnonymous()">
+    <p>로그인하지 않았습니다. <a th:href="@{/ex10/login}">로그인</a></p>
+</div>
+
+<!-- 로그인한 사용자에게만 -->
+<div sec:authorize="isAuthenticated()">
+    <p>
+        <b sec:authentication="name">아이디</b>님
+        (<span sec:authentication="principal.member.name">이름</span>) 환영합니다.
+        권한: <span sec:authentication="principal.authorities">[ROLE_USER]</span>
+    </p>
+    <!-- 로그아웃은 POST. th:action 을 쓰면 CSRF 토큰(_csrf)이 hidden 필드로 자동 삽입된다 -->
+    <form th:action="@{/ex10/logout}" method="post">
+        <button type="submit">로그아웃</button>
+    </form>
+</div>
+
+<!-- 권한별로 다른 메뉴 -->
+<ul>
+    <li><a th:href="@{/ex10/me}">내 정보 (/ex10/me)</a></li>
+    <li sec:authorize="hasRole('ADMIN')"><a th:href="@{/ex10/admin/home}">관리자 페이지</a> (ADMIN에게만 보이는 메뉴)</li>
+</ul>
+<a th:href="@{/}">처음으로</a>
+</body>
+</html>

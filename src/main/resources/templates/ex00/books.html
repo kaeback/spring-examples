@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<!-- [교안 2.1] BookController 가 Model 에 담은 books 를 표로 보여 준다 -->
+<head>
+    <meta charset="UTF-8">
+    <title>책 목록</title>
+</head>
+<body>
+<h1>책 목록</h1>
+<table>
+    <tr th:each="book : ${books}">
+        <td th:text="${book.id}">1</td>
+        <td th:text="${book.title}">제목</td>
+        <td th:text="${book.price}">0</td>
+    </tr>
+</table>
+<a th:href="@{/}">처음으로</a>
+</body>
+</html>

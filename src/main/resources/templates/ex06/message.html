@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<!-- [교안 2.5] @ExceptionHandler 가 고른 안내 화면 -->
+<head>
+    <meta charset="UTF-8">
+    <title>안내</title>
+</head>
+<body>
+<h1>안내</h1>
+<p th:text="${message}">메시지</p>
+<a th:href="@{/}">처음으로</a>
+</body>
+</html>

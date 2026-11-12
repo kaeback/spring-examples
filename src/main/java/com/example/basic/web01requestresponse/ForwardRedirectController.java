@@ -1,14 +1,15 @@
 package com.example.basic.web01requestresponse;
 
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 /**
- * [교안 7] Forward 와 Redirect — 그리고 PRG 패턴
+ * [교안 2.5, 2.6] Forward 와 Redirect — 그리고 PRG 패턴
  *
- * <p>Forward : 서버 내부에서 다른 자원으로 '떠넘김'. 요청 1번, URL 그대로.
+ * <p>Forward : 서버 내부에서 다른 자원으로 넘김. 요청 1번, URL 그대로.
  *             스프링에서 컨트롤러가 반환하는 '뷰 이름'은 기본적으로 forward 다(web02).
  * <p>Redirect: 브라우저에게 'Location 으로 다시 요청해'(302). 요청 2번, URL 바뀜.
  *
@@ -18,6 +19,35 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 @Controller
 @RequestMapping("/ex01")
 public class ForwardRedirectController {
+
+    /**
+     * Forward — 서버 안에서 다른 경로로 '같은 요청'을 넘긴다.
+     * 요청 속성(request attribute)이 그대로 유지되고, 브라우저 주소는 /ex01/forward 그대로다.
+     * 예) GET /ex01/forward → 200 "도착 경로=/ex01/target, 요청 속성 via=forward 로 넘긴 값"
+     */
+    @GetMapping("/forward")
+    public String forward(HttpServletRequest request) {
+        request.setAttribute("via", "forward 로 넘긴 값");
+        return "forward:/ex01/target";
+    }
+
+    /**
+     * Redirect — 브라우저에게 302 + Location 을 보내 '새 요청'을 하게 한다.
+     * 새 요청이므로 여기서 넣은 요청 속성은 사라진다.
+     * 예) GET /ex01/redirect → 302 Location: /ex01/target → 200 "..., 요청 속성 via=null"
+     */
+    @GetMapping("/redirect")
+    public String redirect(HttpServletRequest request) {
+        request.setAttribute("via", "redirect 로 넘긴 값");
+        return "redirect:/ex01/target";
+    }
+
+    /** forward·redirect 의 도착 지점 — 요청 속성이 남아 있는지 글자로 보여 준다. */
+    @GetMapping("/target")
+    @ResponseBody
+    public String target(HttpServletRequest request) {
+        return "도착 경로=" + request.getRequestURI() + ", 요청 속성 via=" + request.getAttribute("via");
+    }
 
     /**
      * 주문 처리(POST) 후 결과 페이지로 redirect — PRG 패턴.

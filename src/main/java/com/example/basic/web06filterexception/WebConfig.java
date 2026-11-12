@@ -12,7 +12,7 @@ import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 /**
- * [교안 10] 필터·인터셉터 등록 설정.
+ * [교안 2.1~2.3] 필터·인터셉터 등록 설정.
  *
  * <p>이 실습 프로젝트는 여러 장(ex01~ex07)이 한 애플리케이션에 모여 있으므로,
  * 필터·인터셉터를 "/*" 전체가 아니라 "/ex06/**" 로 좁게 걸어 다른 장에 영향을 주지 않게 했다.
@@ -55,7 +55,7 @@ public class WebConfig implements WebMvcConfigurer {
         registry.addInterceptor(new LogInterceptor())
                 .order(1)
                 .addPathPatterns("/ex06/**")
-                .excludePathPatterns("/css/**", "/*.ico", "/error");
+                .excludePathPatterns("/error");   // 오류 화면용 내부 요청(/error)은 뺀다 → 교안 1.4
 
         // 로그인 체크 인터셉터: /ex06/secure 이하만. 로그인/공개 경로는 제외.
         registry.addInterceptor(new LoginCheckInterceptor())

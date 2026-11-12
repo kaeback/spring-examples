@@ -10,16 +10,18 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import java.util.stream.Collectors;
 
 /**
- * [교안 11] @RestControllerAdvice — 여러 컨트롤러의 예외를 한곳에서 JSON 으로 변환.
+ * [교안 2.6] @RestControllerAdvice — 여러 컨트롤러의 예외를 한곳에서 JSON 으로 변환.
  *
  * <p>@RestControllerAdvice = @ControllerAdvice + @ResponseBody.
  * 예외 종류별로 @ExceptionHandler 메서드를 두고, 알맞은 HTTP 상태와 오류 DTO 를 반환한다.
  *
- * <p>여기서는 basePackages 로 'web03 패키지의 컨트롤러'에만 적용했다.
- * (basePackages 를 빼면 애플리케이션 전체 컨트롤러에 적용된다.)
+ * <p>여기서는 assignableTypes 로 'API 컨트롤러(ApiExceptionController)'에만 적용했다.
+ * 아래의 Exception 안전망은 모든 예외를 JSON 500 으로 바꾸므로, 대상을 넓히면 화면 컨트롤러
+ * (ErrorPageController 등)의 예외까지 가로채 오류 페이지 실습이 동작하지 않는다.
+ * (대상을 아예 빼면 애플리케이션 전체 컨트롤러에 적용된다.)
  */
 @Slf4j
-@RestControllerAdvice(basePackages = "com.example.basic.web06filterexception")
+@RestControllerAdvice(assignableTypes = ApiExceptionController.class)
 public class ExControllerAdvice {
 
     /** 잘못된 요청 → 400. (예: 존재하지 않는 회원 조회) */

@@ -17,6 +17,15 @@
 <p>강의 순서대로 정리한 패키지별 예제입니다.</p>
 
 <section>
+    <h3><span class="n">00</span> 스프링 기반과 DI <code>web00</code></h3>
+    <ul>
+        <li><a th:href="@{/ex00/books}">계층(컨트롤러→서비스→리포지토리)</a> ·
+            <a th:href="@{/ex00/beans}">등록된 빈 목록</a> ·
+            <a th:href="@{/ex00/discount}">@Primary·@Qualifier</a></li>
+    </ul>
+</section>
+
+<section>
     <h3><span class="n">01</span> 요청과 응답 <code>web01</code></h3>
     <ul>
         <li><a th:href="@{/ex01/members}">요청 매핑</a> ·
@@ -27,6 +36,9 @@
             <a th:href="@{/ex01/order}">Forward/Redirect (PRG)</a></li>
         <li>파라미터 바인딩 심화: <a th:href="@{/ex01/form.html}">폼(select·radio·checkbox → 배열)</a> ·
             <a th:href="@{/ex01/multi(tag=java,tag=spring)}">MultiValueMap</a></li>
+        <li>Forward/Redirect 비교: <a th:href="@{/ex01/forward}">forward</a> ·
+            <a th:href="@{/ex01/redirect}">redirect</a> ·
+            <a th:href="@{/ex01/response/entity/1}">ResponseEntity</a></li>
     </ul>
 </section>
 
@@ -38,10 +50,10 @@
 </section>
 
 <section>
-    <h3><span class="n">03</span> 검증과 쿠키·세션 <code>web03</code></h3>
+    <h3><span class="n">03</span> 쿠키·세션 / 검증 <code>web03</code></h3>
     <ul>
-        <li><a th:href="@{/ex03/members/add}">Bean Validation 폼</a></li>
-        <li><a th:href="@{/ex03/state}">쿠키·세션 상태 화면</a></li>
+        <li><a th:href="@{/ex03/state}">쿠키·세션 상태 화면</a> · <a th:href="@{/ex03/session/info}">세션 정보</a></li>
+        <li><a th:href="@{/ex03/members/add}">Bean Validation 폼</a> (검증 그룹 비교는 curl: <code>POST /ex03/groups/save|update|valid</code>)</li>
     </ul>
 </section>
 
@@ -58,6 +70,8 @@
         <li>쿼리 메소드·페이징·N+1·DTO 데모 → <b>앱 시작 시 콘솔에 자동 출력</b></li>
         <li><a th:href="@{/ex05/members}">회원 목록(DTO)</a> ·
             <a th:href="@{/ex05/members/page(keyword=kim,page=0,size=5,sort='id,desc')}">페이징 API</a></li>
+        <li><a th:href="@{/ex05/members/list}">페이징 목록 화면(페이지 블록)</a> ·
+            <a th:href="@{/ex05/members/search(keyword=kim,ageFrom=28,ageTo=32)}">복합 조건 검색</a></li>
         <li><a th:href="@{/h2-console}">H2 콘솔</a> (JDBC URL: <code>jdbc:h2:mem:testdb</code>)</li>
     </ul>
 </section>
@@ -69,7 +83,12 @@
             <a th:href="@{/ex06/secure/data}">인터셉터 보호</a> ·
             <a th:href="@{/ex06/filter-secure/data}">필터 보호</a> ·
             <a th:href="@{/ex06/login}">로그인</a></li>
-        <li>예외: <a th:href="@{/ex06/api/members/1}">정상</a> ·
+        <li>오류 페이지: <a th:href="@{/ex06/error-page/ex}">500</a> ·
+            <a th:href="@{/ex06/error-page/404}">404</a> ·
+            <a th:href="@{/ex06/error-page/bad}">400</a></li>
+        <li>@ExceptionHandler: <a th:href="@{/ex06/handler/state}">컨트롤러 안 (409)</a> ·
+            <a th:href="@{/ex06/handler/todo}">@ControllerAdvice (501)</a></li>
+        <li>API 예외: <a th:href="@{/ex06/api/members/1}">정상</a> ·
             <a th:href="@{/ex06/api/members/101}">400</a> ·
             <a th:href="@{/ex06/api/boom}">500</a></li>
     </ul>
@@ -80,6 +99,38 @@
     <ul>
         <li><a th:href="@{/ex07/upload}">파일 업로드/다운로드</a></li>
         <li><a th:href="@{/ex07/paging(page=2,size=10)}">페이징 계산(LIMIT/OFFSET)</a></li>
+    </ul>
+</section>
+<section>
+    <h3><span class="n">08</span> REST API <code>web08</code></h3>
+    <ul>
+        <li>API: <a th:href="@{/ex08/api/todos}">GET 목록(JSON)</a> ·
+            <a th:href="@{/ex08/api/todos/1}">GET 단건</a> ·
+            <a th:href="@{/ex08/api/todos/99}">없는 할 일 (404 JSON)</a></li>
+        <li>화면 비교: <a th:href="@{/ex08/ssr}">서버에서 그린 화면(SSR)</a> ·
+            <a th:href="@{/ex08/todos.html}">fetch로 그린 화면</a></li>
+    </ul>
+</section>
+
+<section>
+    <h3><span class="n">09</span> 테스트 <code>test01</code> <code>test02</code></h3>
+    <ul>
+        <li>화면이 없다. 터미널에서 <code>./gradlew test</code> (JUnit 기초: <code>--tests "com.example.basic.test01junit.*"</code>,
+            단위/통합: <code>--tests "com.example.basic.test02unitintegration.*"</code>)</li>
+    </ul>
+</section>
+
+
+<section>
+    <h3><span class="n">10</span> Spring Security <code>web10</code></h3>
+    <ul>
+        <li><a th:href="@{/ex10}">실습 홈</a> ·
+            <a th:href="@{/ex10/login}">로그인</a> ·
+            <a th:href="@{/ex10/me}">내 정보(로그인 필요)</a></li>
+        <li>권한: <a th:href="@{/ex10/admin/home}">관리자 URL</a> ·
+            <a th:href="@{/ex10/report}">@PreAuthorize</a></li>
+        <li><a th:href="@{/ex10/filters}">시큐리티 필터 목록</a> ·
+            <a th:href="@{/ex10/encode}">BCrypt 암호화</a></li>
     </ul>
 </section>
 </body>

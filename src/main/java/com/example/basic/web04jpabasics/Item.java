@@ -9,10 +9,10 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 /**
- * [교안 JPA 기초] 영속성 컨텍스트 동작을 보기 위한 가장 단순한 엔티티.
+ * [교안 2.1] 영속성 컨텍스트 동작을 보기 위한 가장 단순한 엔티티.
  *
- * <p>이 장(web06)은 순수 JPA의 '개념'(생명주기·1차 캐시·변경 감지)을 EntityManager 로 직접 확인한다.
- * 실제 어노테이션 매핑·리포지토리는 다음 장(web07 Spring Data JPA)에서 자세히 다룬다.
+ * <p>이 장(web04)은 순수 JPA의 '개념'(생명주기·1차 캐시·변경 감지)을 EntityManager 로 직접 확인한다.
+ * 리포지토리·쿼리 메소드는 다음 장(web05 Spring Data JPA)에서 다룬다.
  */
 @Entity
 @Getter @Setter

@@ -7,12 +7,17 @@
 <body>
 <h2>Thymeleaf 실습</h2>
 <ul>
-    <li><a th:href="@{/ex02/text}">2,4. 텍스트 출력 (th:text / utext / 스프링 빈)</a></li>
-    <li><a th:href="@{/ex02/variable}">3,5. 변수 표현식 (객체·리스트·맵 / 날짜)</a></li>
-    <li><a th:href="@{/ex02/each}">9,10. 반복과 조건 (each / if / switch)</a></li>
-    <li><a th:href="@{/ex02/fragment}">13. 템플릿 조각 (fragment)</a></li>
-    <li><a th:href="@{/ex02/layout}">14. 템플릿 레이아웃</a></li>
-    <li><a th:href="@{/ex02/form}">심화. th:field 폼 (라디오·체크박스·select 자동 선택)</a></li>
+    <li><a th:href="@{/ex02/text}">2.1 텍스트 출력 (th:text / utext / 스프링 빈)</a></li>
+    <li><a th:href="@{/ex02/variable}">2.2 변수 표현식 (객체·리스트·맵 / 날짜)</a></li>
+    <li><a th:href="@{/ex02/objects(paramData=HelloParam)}">2.3 기본 객체·편의 객체 (param / session / 빈)</a></li>
+    <li><a th:href="@{/ex02/link}">2.4 URL 링크 @{...}</a></li>
+    <li><a th:href="@{/ex02/literal}">2.5 리터럴·연산·속성 값 설정</a></li>
+    <li><a th:href="@{/ex02/each}">2.6 반복과 조건 (each / if / switch / th:block)</a></li>
+    <li><a th:href="@{/ex02/javascript}">2.7 주석과 자바스크립트 인라인 (페이지 소스 보기)</a></li>
+    <li><a th:href="@{/ex02/fragment}">2.8 템플릿 조각 (fragment)</a></li>
+    <li><a th:href="@{/ex02/layout}">2.9 템플릿 레이아웃</a></li>
+    <li><a th:href="@{/ex02/form}">2.10 th:field 폼 (라디오·체크박스·select 자동 선택)</a></li>
 </ul>
+<a th:href="@{/}">홈으로</a>
 </body>
 </html>

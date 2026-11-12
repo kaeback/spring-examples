@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<!-- [교안 2.3] 기본 객체·편의 객체 -->
+<head>
+    <meta charset="UTF-8">
+    <title>기본 객체와 편의 객체</title>
+</head>
+<body>
+<h2>2.3 기본 객체와 편의 객체</h2>
+<ul>
+    <!-- ${param.이름} : 요청 파라미터 (?paramData=HelloParam) -->
+    <li>Request Parameter = <span th:text="${param.paramData}"></span></li>
+    <!-- ${session.이름} : 세션에 저장한 값 (컨트롤러가 session.setAttribute 로 넣었다) -->
+    <li>session = <span th:text="${session.sessionData}"></span></li>
+    <!-- ${@빈이름.메서드(...)} : 스프링 빈 직접 호출 -->
+    <li>spring bean = <span th:text="${@helloBean.hello('Spring!')}"></span></li>
+    <!-- #locale : 기본 객체 (요청의 Locale) -->
+    <li>locale = <span th:text="${#locale}"></span></li>
+</ul>
+<!--
+  Thymeleaf 3.1 부터 ${#request}, ${#response}, ${#session}, ${#servletContext} 는 기본 제공되지 않는다.
+  (쓰면 렌더링 오류) → 위처럼 ${param...}, ${session...} 을 쓰거나, 컨트롤러에서 Model 에 담아 넘긴다.
+-->
+<a th:href="@{/ex02}">목록으로</a>
+</body>
+</html>

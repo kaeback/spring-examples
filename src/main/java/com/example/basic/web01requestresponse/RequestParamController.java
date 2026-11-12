@@ -3,7 +3,7 @@ package com.example.basic.web01requestresponse;
 import org.springframework.web.bind.annotation.*;
 
 /**
- * [교안 5] HTTP 요청 파라미터 받기
+ * [교안 2.2, 2.3] HTTP 요청 파라미터 받기
  *
  * <p>요청 데이터를 받는 4가지 대표 방법을 한 컨트롤러에 모았다.
  *  - @RequestParam   : 쿼리 파라미터·폼 데이터를 개별 변수로

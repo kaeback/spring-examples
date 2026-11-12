@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<!-- [교안 2.6] SSR — 서버(타임리프)가 목록을 채운 '완성된 HTML'을 보낸다 -->
+<head>
+    <meta charset="UTF-8">
+    <title>할 일 (SSR)</title>
+</head>
+<body>
+<h1>할 일 — 서버에서 그린 화면</h1>
+<ul>
+    <li th:each="todo : ${todos}">
+        <span th:text="${todo.done} ? '[완료]' : '[ ]'">[ ]</span>
+        <span th:text="${todo.title}">할 일</span>
+    </li>
+</ul>
+<p><a href="/ex08/todos.html">같은 목록을 fetch로 그리는 화면</a> · <a href="/">처음으로</a></p>
+</body>
+</html>

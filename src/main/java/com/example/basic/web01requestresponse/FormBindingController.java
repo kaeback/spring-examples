@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * [교안 5 심화] 다양한 요청 파라미터 바인딩 — 폼의 select / radio / checkbox 처리.
+ * [교안 2.7] 다양한 요청 파라미터 바인딩 — 폼의 select / radio / checkbox 처리.
  *
  * <p>실무 폼은 단순 String·int 뿐 아니라 다음을 함께 받는다.
  *  - 라디오            : 하나만 선택 → 단일 값(String)

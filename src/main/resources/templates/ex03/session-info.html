@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<!-- [교안 쿠키·세션 2.3] 세션 정보 — 서버가 세션 ID 하나로 무엇을 기억하는지 확인한다 -->
+<head>
+    <meta charset="UTF-8">
+    <title>세션 정보</title>
+    <style>
+        body { font-family: sans-serif; max-width: 560px; margin: 24px auto; line-height: 1.7; }
+        th { text-align: left; padding-right: 16px; color: #555; }
+    </style>
+</head>
+<body>
+<h2>세션 정보</h2>
+
+<p th:if="${sessionId == null}">세션 없음 — 아직 세션이 만들어지지 않았거나 로그아웃으로 무효화되었습니다.</p>
+
+<table th:if="${sessionId != null}">
+    <tr><th>세션 ID</th><td th:text="${sessionId}">A1B2C3...</td></tr>
+    <tr><th>타임아웃(초)</th><td th:text="${maxInactiveInterval}">1800</td></tr>
+    <tr><th>생성 시각</th><td th:text="${#temporals.format(creationTime, 'HH:mm:ss')}">10:00:00</td></tr>
+    <tr><th>마지막 접근</th><td th:text="${#temporals.format(lastAccessedTime, 'HH:mm:ss')}">10:05:00</td></tr>
+    <tr><th>loginMember</th><td th:text="${loginMember} ?: '(없음)'">홍길동</td></tr>
+</table>
+
+<p><a th:href="@{/ex03/state}">상태 화면으로</a></p>
+</body>
+</html>

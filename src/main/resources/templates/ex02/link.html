@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<!-- [교안 2.4] URL 링크 @{...} — 링크 글자(th:text)에도 같은 식을 넣어 만들어진 주소를 화면에 보여 준다 -->
+<head>
+    <meta charset="UTF-8">
+    <title>URL 링크</title>
+</head>
+<body>
+<h2>2.4 URL 링크 @{...}</h2>
+<ul>
+    <!-- 단순 URL -->
+    <li><a th:href="@{/hello}" th:text="@{/hello}">basic url</a></li>
+    <!-- 쿼리 파라미터: ( ) 안의 값이 ?param1=...&param2=... 로 붙는다 -->
+    <li><a th:href="@{/hello(param1=${param1}, param2=${param2})}"
+           th:text="@{/hello(param1=${param1}, param2=${param2})}">query param</a></li>
+    <!-- 경로 변수: {param1} 자리를 ( ) 안의 값으로 채운다 -->
+    <li><a th:href="@{/hello/{param1}/{param2}(param1=${param1}, param2=${param2})}"
+           th:text="@{/hello/{param1}/{param2}(param1=${param1}, param2=${param2})}">path variable</a></li>
+    <!-- 경로 변수 + 쿼리: 경로에 쓰이지 않은 param2 는 쿼리 파라미터로 붙는다 -->
+    <li><a th:href="@{/hello/{param1}(param1=${param1}, param2=${param2})}"
+           th:text="@{/hello/{param1}(param1=${param1}, param2=${param2})}">path variable + query</a></li>
+</ul>
+<a th:href="@{/ex02}">목록으로</a>
+</body>
+</html>

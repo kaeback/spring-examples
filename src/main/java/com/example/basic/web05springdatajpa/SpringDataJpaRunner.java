@@ -7,7 +7,7 @@ import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 /**
- * 애플리케이션 시작 시 web07 Spring Data JPA 데모를 단계별로 실행한다.
+ * [교안 2.2] 애플리케이션 시작 시 web05 Spring Data JPA 데모를 단계별로 실행한다.
  * 각 단계 사이에 구분선을 넣어 콘솔에서 SQL 로그를 구분해 보기 쉽게 했다.
  */
 @Slf4j
@@ -22,33 +22,40 @@ public class SpringDataJpaRunner implements CommandLineRunner {
     public void run(String... args) {
         log.info("========== [web05] Spring Data JPA 데모 ==========");
 
+        section("2.2 시드 데이터");
         demo.seed();
 
-        section("쿼리 메소드 & @Query");
+        section("2.2 기본 CRUD 메서드");
+        demo.demoCrud();
+
+        section("2.3 쿼리 메소드");
         demo.demoQueryMethods();
 
-        section("페이징 (Pageable / Page)");
+        section("2.4 @Query");
+        demo.demoQuery();
+
+        section("2.5 페이징 (Pageable / Page)");
         demo.demoPaging();
 
-        section("범위·In·복합 조건 검색");
-        demo.demoSearch();
-
-        section("Slice (더보기 / COUNT 쿼리 없음)");
+        section("2.6 Slice (COUNT 쿼리 없음)");
         demo.demoSlice();
 
-        section("N+1 문제 (LAZY + 목록 순회)");
+        section("2.7 N+1 문제 (LAZY + 목록 순회)");
         demo.demoNPlusOneProblem();
 
-        section("N+1 해결 ① fetch join");
-        demo.demoFetchJoinSolution();
+        section("2.7 N+1 해결 ① fetch join");
+        demo.demoFetchJoin();
 
-        section("변경 감지 (Dirty Checking)");
+        section("2.7 N+1 해결 ② @EntityGraph");
+        demo.demoEntityGraph();
+
+        section("2.8 변경 감지 (Dirty Checking)");
         demo.demoDirtyChecking();
 
-        section("엔티티 → DTO");
+        section("2.9 DTO 프로젝션");
         demo.demoDto();
 
-        log.info("========== [web05] 끝. 브라우저에서 GET /ex05/members 도 확인해 보세요 ==========");
+        log.info("========== [web05] 끝. 브라우저에서 /ex05/members 도 확인해 보세요 ==========");
     }
 
     private void section(String title) {

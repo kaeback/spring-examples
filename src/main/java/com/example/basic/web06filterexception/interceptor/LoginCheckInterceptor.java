@@ -7,7 +7,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.servlet.HandlerInterceptor;
 
 /**
- * [교안 10] 인터셉터로 로그인 체크 (스프링 환경에서 권장되는 방식).
+ * [교안 2.3] 인터셉터로 로그인 체크 (스프링 환경에서 권장되는 방식).
  *
  * <p>preHandle 에서 세션 로그인 여부만 확인하면 된다.
  * 인터셉터는 WebConfig 의 addPathPatterns/excludePathPatterns 로 URL 을 세밀하게 지정할 수 있어

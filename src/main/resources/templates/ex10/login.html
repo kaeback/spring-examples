@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<!-- [교안 2.4] 로그인 화면. 전송(POST /ex10/login)은 시큐리티의 UsernamePasswordAuthenticationFilter 가 받는다 -->
+<head>
+    <meta charset="UTF-8">
+    <title>로그인</title>
+</head>
+<body>
+<h1>로그인 (/ex10)</h1>
+
+<!-- 실패 핸들러가 붙여 준 ?error=메시지 (교안 2.7) -->
+<p th:if="${param.error}" th:text="${param.error}" style="color: red">실패 메시지</p>
+
+<!-- 입력 name 은 시큐리티 기본값 username, password 와 같아야 한다 -->
+<form th:action="@{/ex10/login}" method="post">
+    <p>아이디 <input type="text" name="username"></p>
+    <p>비밀번호 <input type="password" name="password"></p>
+    <button type="submit">로그인</button>
+</form>
+<p>테스트 계정: user / admin / locked (비밀번호 모두 1234)</p>
+<a th:href="@{/ex10}">실습 홈</a>
+</body>
+</html>

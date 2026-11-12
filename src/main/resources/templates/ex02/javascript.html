@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<!-- [교안 2.7] 주석과 자바스크립트 인라인 — '페이지 소스 보기'로 결과를 확인한다 -->
+<head>
+    <meta charset="UTF-8">
+    <title>주석과 자바스크립트 인라인</title>
+</head>
+<body>
+<h2>2.7 주석</h2>
+<!-- 1. 표준 HTML 주석: 지워지지 않고 그대로 나간다. 단, 안에 쓴 인라인 식은 해석된다 → [[${data}]] -->
+
+<!--/* 2. 타임리프 파서 주석: 렌더링할 때 통째로 지워진다 [[${data}]] */-->
+
+<!--/*/ 3. 프로토타입 주석: 렌더링할 때만 안의 내용이 나타난다
+<span th:text="${data}">html data</span>
+/*/-->
+
+<h2>2.7 자바스크립트 인라인</h2>
+<p>결과는 화면이 아니라 페이지 소스와 브라우저 콘솔(F12)에서 확인한다.</p>
+
+<!-- 인라인 없이: 문자열에 따옴표가 붙지 않아 자바스크립트 오류가 된다 -->
+<script>
+    var plain = [[${user.username}]];
+</script>
+
+<!-- th:inline="javascript": 문자열엔 따옴표, 객체는 JSON 으로 바꿔 준다 -->
+<script th:inline="javascript">
+    var username = [[${user.username}]];
+    var age = [[${user.age}]];
+    var user = [[${user}]];
+    // 내추럴 템플릿: 주석 안의 식으로 바뀌고, 뒤의 "test" 는 렌더링 시 지워진다
+    var username2 = /*[[${user.username}]]*/ "test";
+    console.log(username, age, user, username2);
+</script>
+
+<!-- 인라인 each: [# th:each ...] ... [/] -->
+<script th:inline="javascript">
+    [# th:each="u, stat : ${users}"]
+    var user[[${stat.count}]] = [[${u}]];
+    [/]
+</script>
+
+<a th:href="@{/ex02}">목록으로</a>
+</body>
+</html>
