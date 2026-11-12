@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 /**
- * [교안 검증 2.4] 검증 그룹 비교 — 같은 입력을 세 가지 방식으로 검증해 '어떤 필드가 걸렸는지'를 글자로 돌려준다.
+ * [교안 검증 4.2] 검증 그룹 비교 — 같은 입력을 세 가지 방식으로 검증해 '어떤 필드가 걸렸는지'를 글자로 돌려준다.
  *
  * <p>화면 없이 curl 로 확인한다. 예)
  *   curl -d "name=" localhost:8080/ex03/groups/save

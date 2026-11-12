@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import java.util.List;
 
 /**
- * [교안 2.10] th:field 로 폼 입력(라디오·체크박스·select) 그리기.
+ * [교안 5.2] th:field 로 폼 입력(라디오·체크박스·select) 그리기.
  *
  * <p>web01 의 정적 폼은 선택 상태를 직접 표시해야 했지만, th:field 는 모델 객체의 값과 비교해
  * 일치하는 입력을 '자동으로' checked/selected 처리한다. (수정 폼에서 기존 값 복원에 특히 유용)

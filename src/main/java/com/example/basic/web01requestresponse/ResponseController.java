@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import java.util.List;
 
 /**
- * [교안 2.4] HTTP 응답 — 세 가지 응답 방식 + ResponseEntity.
+ * [교안 3.2] HTTP 응답 — 세 가지 응답 방식 + ResponseEntity.
  *
  * <p>스프링 MVC의 응답 방식은 세 가지다.
  *   ① 정적 리소스   : src/main/resources/static 의 파일을 그대로 제공

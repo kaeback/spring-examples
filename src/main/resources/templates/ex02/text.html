@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<!-- [교안 2.1] 텍스트 출력 -->
+<!-- [교안 2.2] 텍스트 출력 -->
 <head>
     <meta charset="UTF-8">
     <title>텍스트 출력</title>
 </head>
 <body>
-<h2>2.1 텍스트 출력</h2>
+<h2>2.2 텍스트 출력</h2>
 <ul>
     <!-- th:text : 태그 속성으로 출력. HTML 특수문자를 이스케이프한다(<b> → &lt;b&gt;) -->
     <li>th:text = <span th:text="${data}"></span></li>
@@ -18,7 +18,7 @@
     <li>th:utext = <span th:utext="${data}"></span></li>
 </ul>
 
-<h2>2.1 스프링 빈 호출 (2.3에서 다시)</h2>
+<h2>2.2 스프링 빈 호출 (3.3에서 다시)</h2>
 <ul>
     <!-- ${@빈이름.메서드(...)} 로 스프링 빈의 메서드를 직접 호출 -->
     <li>spring bean = <span th:text="${@helloBean.hello('Spring!')}"></span></li>

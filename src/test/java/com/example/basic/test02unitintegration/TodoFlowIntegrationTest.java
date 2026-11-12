@@ -14,7 +14,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 /**
- * [테스트 2장 2.6] @SpringBootTest + MockMvc — 목 없이 진짜 TodoStore 로 "생성 → 조회 → 삭제" 흐름을 검증한다.
+ * [테스트 2장 3.4] @SpringBootTest + MockMvc — 목 없이 진짜 TodoStore 로 "생성 → 조회 → 삭제" 흐름을 검증한다.
  *
  * <p>Boot 4 의 @SpringBootTest 는 MockMvc 를 자동으로 만들지 않으므로 @AutoConfigureMockMvc 를 붙인다.
  */

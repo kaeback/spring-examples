@@ -3,7 +3,7 @@ package com.example.basic.test01junit;
 import java.util.List;
 
 /**
- * [테스트 1장 2.4] 생성자로 저장소를 받는 서비스.
+ * [테스트 1장 2.5] 생성자로 저장소를 받는 서비스.
  *
  * <p>스프링 빈으로 등록하지 않는다(@Service 없음). 생성자 주입 구조라서
  * 테스트가 원하는 저장소(메모리·가짜·목)를 new 로 넣을 수 있다.

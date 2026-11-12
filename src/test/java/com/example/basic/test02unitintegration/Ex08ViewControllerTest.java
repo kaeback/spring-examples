@@ -21,7 +21,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 /**
- * [테스트 2장 2.5] @WebMvcTest — 화면 컨트롤러의 상태 코드·뷰 이름·모델·렌더링 결과를 검증한다.
+ * [테스트 2장 3.3] @WebMvcTest — 화면 컨트롤러의 상태 코드·뷰 이름·모델·렌더링 결과를 검증한다.
  */
 @WebMvcTest(Ex08ViewController.class)   // 웹 계층만 로딩 (가벼움)
 @Import({Ex10SecurityConfig.class, Ex10AuthFailureHandler.class})   // 없으면 부트 기본 보안이 걸려 401·403

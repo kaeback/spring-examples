@@ -6,7 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 /**
- * [교안 2.7] 연관관계 매핑 — 주문 N : 회원 1 (N:1).
+ * [교안 5.2] 연관관계 매핑 — 주문 N : 회원 1 (N:1).
  *
  * <p>FK(member_id)를 가진 이 쪽이 '연관관계의 주인'이다.
  * fetch 는 항상 LAZY 가 원칙(@ManyToOne 기본값은 EAGER 이므로 명시적으로 LAZY 지정).

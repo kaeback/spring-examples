@@ -6,7 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 /**
- * [교안 2.6] 비교용 화면 컨트롤러(@Controller) — 같은 할 일 목록을 서버에서 HTML 로 완성해 보낸다(SSR).
+ * [교안 4.2] 비교용 화면 컨트롤러(@Controller) — 같은 할 일 목록을 서버에서 HTML 로 완성해 보낸다(SSR).
  *
  * <p>@RestController 인 TodoApiController 는 데이터(JSON)만 보내고, 화면은 브라우저의
  * 자바스크립트(static/ex08/todos.html)가 그린다.

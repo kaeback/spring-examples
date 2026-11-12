@@ -9,7 +9,7 @@ import lombok.extern.slf4j.Slf4j;
 import java.io.IOException;
 
 /**
- * [교안 2.3] 필터로 로그인 체크 — 인증 안 된 요청을 서블릿(컨트롤러)에 닿기 전에 걸러낸다.
+ * [교안 3.3] 필터로 로그인 체크 — 인증 안 된 요청을 서블릿(컨트롤러)에 닿기 전에 걸러낸다.
  *
  * <p>이 실습에서는 WebConfig 에서 "/ex06/filter-secure/*" 경로에만 등록한다.
  * 그래서 그 경로의 모든 요청은 세션 로그인이 있어야 통과한다.

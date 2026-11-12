@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
- * [교안 2.4] 같은 타입의 빈이 두 개일 때 어떤 빈이 주입되는지 확인한다.
+ * [교안 5.2] 같은 타입의 빈이 두 개일 때 어떤 빈이 주입되는지 확인한다.
  * GET /ex00/discount
  */
 @RestController

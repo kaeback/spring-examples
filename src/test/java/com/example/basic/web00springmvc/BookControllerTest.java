@@ -9,7 +9,7 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 
 /**
- * [교안 2.2] 생성자 주입이면 스프링 없이 new 로 만들고 가짜(Fake) 객체를 넣어 테스트할 수 있다.
+ * [교안 3.2] 생성자 주입이면 스프링 없이 new 로 만들고 가짜(Fake) 객체를 넣어 테스트할 수 있다.
  */
 class BookControllerTest {
 

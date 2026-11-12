@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 
 /**
- * [테스트 2장 2.1] 순수 단위 테스트 — 가짜 저장소를 생성자로 넣는다. 스프링 컨테이너가 필요 없다.
+ * [테스트 2장 2.3] 순수 단위 테스트 — 가짜 저장소를 생성자로 넣는다. 스프링 컨테이너가 필요 없다.
  */
 class MemberServiceFakeTest {
 

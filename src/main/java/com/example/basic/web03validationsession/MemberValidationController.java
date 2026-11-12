@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 /**
- * [교안 검증 2.2] Bean Validation — 화면(폼) 컨트롤러 흐름.
+ * [교안 검증 3.2] Bean Validation — 화면(폼) 컨트롤러 흐름.
  *
  * <p>핵심 패턴: @Validated(또는 @Valid) + BindingResult
  *  1) 검증 대상 파라미터 '바로 뒤'에 BindingResult 를 둔다.

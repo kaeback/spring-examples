@@ -7,7 +7,7 @@ import java.util.Map;
 import java.util.Optional;
 
 /**
- * [테스트 1장 2.4] DB 대신 Map 에 저장하는 구현.
+ * [테스트 1장 2.5] DB 대신 Map 에 저장하는 구현.
  *
  * <p>스프링 빈으로 등록하지 않는다(@Repository 없음). 테스트에서 new 로 직접 만들어 쓴다.
  */

@@ -1,7 +1,7 @@
 package com.example.basic.test01junit;
 
 /**
- * [테스트 1장 2.2] 테스트 연습용 회원 — JPA 엔티티가 아닌 평범한 객체.
+ * [테스트 1장 2.3] 테스트 연습용 회원 — JPA 엔티티가 아닌 평범한 객체.
  * (web05 의 JPA Member 와는 다른 클래스다)
  */
 public class Member {

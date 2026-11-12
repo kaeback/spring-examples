@@ -9,7 +9,7 @@ import java.util.Arrays;
 import java.util.stream.Collectors;
 
 /**
- * [교안 2.1, 2.3] 스프링 컨테이너(ApplicationContext)에 등록된 빈 중 이 패키지의 것만 보여 준다.
+ * [교안 2.4, 4.2] 스프링 컨테이너(ApplicationContext)에 등록된 빈 중 이 패키지의 것만 보여 준다.
  * GET /ex00/beans → "빈 이름 → 클래스" 목록 (텍스트)
  */
 @RestController

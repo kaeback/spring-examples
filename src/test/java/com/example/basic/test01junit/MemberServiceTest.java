@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
- * [테스트 1장 2.4] @BeforeEach — 테스트마다 새 저장소로 시작해 서로 영향을 주지 않는다.
+ * [테스트 1장 2.5] @BeforeEach — 테스트마다 새 저장소로 시작해 서로 영향을 주지 않는다.
  */
 class MemberServiceTest {
 

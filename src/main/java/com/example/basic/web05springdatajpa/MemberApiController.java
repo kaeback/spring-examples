@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 /**
- * [교안 2.5, 2.9] REST API — 엔티티가 아니라 DTO 로 응답하고, 페이징을 요청 파라미터로 받는다.
+ * [교안 4.2, 7.2] REST API — 엔티티가 아니라 DTO 로 응답하고, 페이징을 요청 파라미터로 받는다.
  *
  * <p>시작 시 SpringDataJpaRunner 가 회원을 미리 저장해 두므로 바로 조회된다.
  *

@@ -7,7 +7,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 /**
- * [테스트 1장 2.4] 생명주기 — 어노테이션이 붙은 메서드가 언제 호출되는지 콘솔로 확인한다.
+ * [테스트 1장 2.5] 생명주기 — 어노테이션이 붙은 메서드가 언제 호출되는지 콘솔로 확인한다.
  */
 class LifecycleTest {
 

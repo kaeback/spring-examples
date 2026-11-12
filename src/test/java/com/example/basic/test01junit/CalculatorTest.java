@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;                 // JUnit Jupiter (JUnit 5·6 
 import static org.junit.jupiter.api.Assertions.*;  // assertEquals 등
 
 /**
- * [테스트 1장 2.1] 첫 번째 테스트 — @Test 와 given-when-then.
+ * [테스트 1장 2.2] 첫 번째 테스트 — @Test 와 given-when-then.
  */
 class CalculatorTest {
 

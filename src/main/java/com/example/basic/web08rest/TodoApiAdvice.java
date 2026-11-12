@@ -8,10 +8,10 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 /**
- * [교안 2.5] web08rest 패키지 전용 API 예외 처리 — 오류도 JSON({"code","message"})으로 내려 준다.
+ * [교안 3.5] web08rest 패키지 전용 API 예외 처리 — 오류도 JSON({"code","message"})으로 내려 준다.
  *
  * <p>basePackages 로 이 패키지의 컨트롤러에만 적용했다. 다른 장의 컨트롤러(화면·오류 페이지 실습)에는
- * 영향을 주지 않는다. (원리는 5장 2.5~2.6 의 @ControllerAdvice·@RestControllerAdvice 와 같다)
+ * 영향을 주지 않는다. (원리는 5장 4.3~4.4 의 @ControllerAdvice·@RestControllerAdvice 와 같다)
  */
 @RestControllerAdvice(basePackages = "com.example.basic.web08rest")
 public class TodoApiAdvice {

@@ -14,7 +14,7 @@ import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 
 /**
- * [교안 2.7] 로그인 실패 처리 — 실패 원인(예외 종류)에 따라 다른 메시지를 로그인 화면에 보여 준다.
+ * [교안 3.6] 로그인 실패 처리 — 실패 원인(예외 종류)에 따라 다른 메시지를 로그인 화면에 보여 준다.
  */
 @Slf4j
 @Component

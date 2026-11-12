@@ -10,7 +10,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicLong;
 
 /**
- * [교안 2.1] 메모리 저장소 — DB 없이 REST API 만 연습하려고 Map 에 저장한다.
+ * [교안 2.3] 메모리 저장소 — DB 없이 REST API 만 연습하려고 Map 에 저장한다.
  *
  * <p>싱글톤 빈 하나를 여러 요청(스레드)이 함께 쓰므로 ConcurrentHashMap·AtomicLong 을 쓴다.
  */

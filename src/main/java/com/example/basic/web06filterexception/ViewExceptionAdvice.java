@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 /**
- * [교안 2.5] @ControllerAdvice — 여러 컨트롤러에 같은 예외 처리를 건다.
+ * [교안 4.3] @ControllerAdvice — 여러 컨트롤러에 같은 예외 처리를 건다.
  *
  * <p>대상을 지정하지 않으면 애플리케이션의 모든 컨트롤러에 적용된다.
  * 이 실습 프로젝트는 여러 장이 한 앱에 모여 있으므로 대상을 ExceptionHandlerController 로 좁혔다.

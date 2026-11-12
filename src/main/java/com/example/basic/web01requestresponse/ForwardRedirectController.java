@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 /**
- * [교안 2.5, 2.6] Forward 와 Redirect — 그리고 PRG 패턴
+ * [교안 4.2, 5.2] Forward 와 Redirect — 그리고 PRG 패턴
  *
  * <p>Forward : 서버 내부에서 다른 자원으로 넘김. 요청 1번, URL 그대로.
  *             스프링에서 컨트롤러가 반환하는 '뷰 이름'은 기본적으로 forward 다(web02).

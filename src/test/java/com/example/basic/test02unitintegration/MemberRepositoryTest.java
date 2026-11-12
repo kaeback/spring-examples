@@ -14,7 +14,7 @@ import org.springframework.data.domain.Sort;
 import static org.assertj.core.api.Assertions.assertThat;
 
 /**
- * [테스트 2장 2.4] @DataJpaTest — JPA 관련 빈(엔티티·리포지토리)만 띄워 쿼리 메서드를 검증한다.
+ * [테스트 2장 3.2] @DataJpaTest — JPA 관련 빈(엔티티·리포지토리)만 띄워 쿼리 메서드를 검증한다.
  *
  * <p>내장 DB(H2)로 바꿔 실행하고, 테스트마다 트랜잭션을 롤백한다.
  * 앱 시작 시 데이터를 넣는 CommandLineRunner(web04·web05 데모)는 실행되지 않으므로 DB 는 비어 있다.

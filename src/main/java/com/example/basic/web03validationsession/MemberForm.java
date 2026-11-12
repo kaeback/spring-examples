@@ -7,7 +7,7 @@ import org.hibernate.validator.constraints.Range;
 import java.util.List;
 
 /**
- * [교안 검증 2.1] Bean Validation 실습용 폼.
+ * [교안 검증 2.2] Bean Validation 실습용 폼.
  *
  * <p>요청 데이터의 유효성을 어노테이션으로 '선언적으로' 검증한다.
  * 컨트롤러에서 @Valid(또는 @Validated)를 붙여야 실제 검증이 실행된다.

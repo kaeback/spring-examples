@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 /**
- * [교안 2.7] 연관관계의 주인 — 선수 N : 팀 1.
+ * [교안 5.2] 연관관계의 주인 — 선수 N : 팀 1.
  *
  * <p>FK(team_id)를 가진 이 쪽이 주인이다. team 필드에 넣은 값만 FK 컬럼에 저장된다.
  */

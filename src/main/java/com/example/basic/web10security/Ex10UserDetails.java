@@ -9,7 +9,7 @@ import java.util.Collection;
 import java.util.List;
 
 /**
- * [교안 2.3] 시큐리티가 이해하는 사용자 정보(UserDetails).
+ * [교안 3.4] 시큐리티가 이해하는 사용자 정보(UserDetails).
  * 우리 회원 객체(Ex10Member)를 감싸서 UserDetails 규격에 맞춘다.
  */
 @Getter
@@ -37,7 +37,7 @@ public class Ex10UserDetails implements UserDetails {
     }
 
     // isAccountNonExpired·isCredentialsNonExpired·isEnabled 는 기본값(true)을 그대로 쓴다.
-    // 잠금 여부만 회원 정보로 결정한다 → false 면 LockedException (교안 2.7)
+    // 잠금 여부만 회원 정보로 결정한다 → false 면 LockedException (교안 3.6)
     @Override
     public boolean isAccountNonLocked() {
         return !member.isLocked();

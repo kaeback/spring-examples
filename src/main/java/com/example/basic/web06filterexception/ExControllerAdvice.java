@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import java.util.stream.Collectors;
 
 /**
- * [교안 2.6] @RestControllerAdvice — 여러 컨트롤러의 예외를 한곳에서 JSON 으로 변환.
+ * [교안 4.4] @RestControllerAdvice — 여러 컨트롤러의 예외를 한곳에서 JSON 으로 변환.
  *
  * <p>@RestControllerAdvice = @ControllerAdvice + @ResponseBody.
  * 예외 종류별로 @ExceptionHandler 메서드를 두고, 알맞은 HTTP 상태와 오류 DTO 를 반환한다.

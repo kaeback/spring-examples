@@ -8,7 +8,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 /**
- * [교안 2.3] 로그인할 때 시큐리티가 호출하는 사용자 조회 서비스.
+ * [교안 3.4] 로그인할 때 시큐리티가 호출하는 사용자 조회 서비스.
  * 아이디로 회원을 찾아 UserDetails 로 돌려준다. 비밀번호 비교는 시큐리티가 한다.
  */
 @Slf4j

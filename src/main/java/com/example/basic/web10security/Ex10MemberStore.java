@@ -8,7 +8,7 @@ import java.util.Optional;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
- * [교안 2.3] 메모리 회원 저장소. (게시판에서는 MemberRepository 가 DB에서 찾는다)
+ * [교안 3.4] 메모리 회원 저장소. (게시판에서는 MemberRepository 가 DB에서 찾는다)
  *
  * <p>테스트 계정 — 비밀번호는 모두 1234
  *   user   : ROLE_USER

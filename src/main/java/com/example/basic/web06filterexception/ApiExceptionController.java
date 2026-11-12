@@ -4,7 +4,7 @@ import jakarta.validation.Valid;
 import org.springframework.web.bind.annotation.*;
 
 /**
- * [교안 2.6] API 예외 처리 실습용 컨트롤러.
+ * [교안 4.4] API 예외 처리 실습용 컨트롤러.
  *
  * <p>여기서 던지는 예외는 같은 패키지의 ExControllerAdvice 가 잡아 JSON 오류로 바꿔 준다.
  *

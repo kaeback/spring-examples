@@ -10,7 +10,7 @@ import org.springframework.web.server.ResponseStatusException;
 import java.io.IOException;
 
 /**
- * [교안 2.4] 예외와 오류 페이지.
+ * [교안 4.2] 예외와 오류 페이지.
  *
  * <p>주소마다 다른 방식으로 오류를 낸다. 브라우저로 열어 상태 코드와 오류 화면을 비교하자.
  *  - /ex06/error-page/ex   → 그냥 던진다                    → 500 (5xx 화면이 없으므로 Whitelabel)

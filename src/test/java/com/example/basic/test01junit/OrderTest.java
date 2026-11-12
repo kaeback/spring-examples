@@ -7,7 +7,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 /**
- * [테스트 1장 2.5] 한 메서드(discount)를 '행동'마다 나눠 테스트한다 — 정상·경계·예외.
+ * [테스트 1장 3.2] 한 메서드(discount)를 '행동'마다 나눠 테스트한다 — 정상·경계·예외.
  */
 @DisplayName("주문 할인")
 class OrderTest {

@@ -25,7 +25,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 /**
- * [테스트 2장 2.5] @WebMvcTest + jsonPath — REST API 의 상태 코드·헤더·JSON 본문을 검증한다.
+ * [테스트 2장 3.3] @WebMvcTest + jsonPath — REST API 의 상태 코드·헤더·JSON 본문을 검증한다.
  *
  * <p>@RestControllerAdvice(TodoApiAdvice)도 웹 계층이라 함께 등록된다 → 오류 JSON 까지 확인할 수 있다.
  */

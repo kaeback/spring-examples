@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 /**
- * [교안 2.5] @ExceptionHandler — 예외를 직접 잡아 내가 고른 화면을 보여 준다.
+ * [교안 4.3] @ExceptionHandler — 예외를 직접 잡아 내가 고른 화면을 보여 준다.
  *
  *  - /ex06/handler/state → 이 컨트롤러 안의 @ExceptionHandler 가 처리      → 409 + ex06/message 화면
  *  - /ex06/handler/todo  → 컨트롤러 안에 핸들러가 없음 → ViewExceptionAdvice → 501 + ex06/message 화면

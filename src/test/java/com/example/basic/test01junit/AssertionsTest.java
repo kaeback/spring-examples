@@ -12,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
- * [테스트 1장 2.2~2.3] 검증 — JUnit Assertions 와 AssertJ 를 나란히 비교한다.
+ * [테스트 1장 2.3~2.4] 검증 — JUnit Assertions 와 AssertJ 를 나란히 비교한다.
  */
 class AssertionsTest {
 

@@ -3,7 +3,7 @@ package com.example.basic.web01requestresponse;
 import org.springframework.web.bind.annotation.*;
 
 /**
- * [교안 2.1] 요청 매핑 (@RequestMapping)
+ * [교안 2.2] 요청 매핑 (@RequestMapping)
  *
  * <p>클래스 레벨 @RequestMapping 으로 기본 경로(/ex01/members)를 정하고,
  * 메서드 레벨 매핑으로 세부 경로·HTTP 메서드를 지정한다.

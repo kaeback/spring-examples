@@ -8,7 +8,7 @@ import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
 /**
- * [교안 2.2] 인터셉터 (Spring Interceptor) — 디스패처 서블릿 '안쪽'에서 동작.
+ * [교안 3.2] 인터셉터 (Spring Interceptor) — 디스패처 서블릿 '안쪽'에서 동작.
  *
  * <p>필터는 doFilter() 하나뿐이지만, 인터셉터는 단계별 콜백을 제공한다.
  *  - preHandle      : 컨트롤러 호출 '전'. false 를 반환하면 진행 중단.

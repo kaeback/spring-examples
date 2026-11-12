@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 /**
- * [교안 2.1] 업로드 파일 메타데이터를 보관하는 아주 단순한 메모리 저장소.
+ * [교안 2.3] 업로드 파일 메타데이터를 보관하는 아주 단순한 메모리 저장소.
  * (실무라면 DB 테이블에 저장한다. 여기서는 학습용으로 메모리에 둔다.)
  */
 @Component

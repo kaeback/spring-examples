@@ -12,7 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 import static org.assertj.core.api.Assertions.assertThat;
 
 /**
- * [테스트 2장 2.6] @SpringBootTest — 애플리케이션 전체를 띄워 진짜 빈(서비스 + JPA + H2)으로 검증한다.
+ * [테스트 2장 3.4] @SpringBootTest — 애플리케이션 전체를 띄워 진짜 빈(서비스 + JPA + H2)으로 검증한다.
  */
 @SpringBootTest          // 스프링 컨테이너를 띄운다
 @Transactional           // 테스트가 끝나면 롤백 → 다른 테스트에 데이터가 남지 않는다

@@ -4,7 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 /**
- * [교안 2.1] 책 도메인 객체 — DB 없이 메모리에 보관하는 평범한 자바 객체(POJO).
+ * [교안 2.4] 책 도메인 객체 — DB 없이 메모리에 보관하는 평범한 자바 객체(POJO).
  */
 @Getter
 @Setter

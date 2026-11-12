@@ -6,7 +6,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 /**
- * [교안 2.1] 앱이 시작될 때 샘플 책 두 권을 넣어 둔다.
+ * [교안 2.4] 앱이 시작될 때 샘플 책 두 권을 넣어 둔다.
  * CommandLineRunner 빈은 컨테이너 준비가 끝난 직후 run() 이 한 번 호출된다.
  */
 @Slf4j

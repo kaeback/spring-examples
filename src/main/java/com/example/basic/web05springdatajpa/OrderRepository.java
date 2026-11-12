@@ -8,7 +8,7 @@ import org.springframework.data.jpa.repository.Query;
 import java.util.List;
 
 /**
- * [교안 2.7] 주문 리포지토리 — N+1 문제와 그 해결책을 보여 준다.
+ * [교안 5.2] 주문 리포지토리 — N+1 문제와 그 해결책을 보여 준다.
  */
 public interface OrderRepository extends JpaRepository<Order, Long> {
 

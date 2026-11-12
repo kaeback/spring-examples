@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<!-- [교안 2.5] 리터럴 · 연산 · 속성 값 설정 -->
+<!-- [교안 3.5] 리터럴 · 연산 · 속성 값 설정 -->
 <head>
     <meta charset="UTF-8">
     <title>리터럴과 연산</title>
     <style>.large { font-size: 18px; }</style>
 </head>
 <body>
-<h2>2.5 리터럴</h2>
+<h2>3.5 리터럴</h2>
 <ul>
     <!-- 문자 리터럴은 작은따옴표로 감싼다. 공백이 있으면 반드시 감싸야 한다 -->
     <li>'hello' + ' world!' = <span th:text="'hello' + ' world!'"></span></li>
@@ -15,7 +15,7 @@
     <li>|hello ${data}| = <span th:text="|hello ${data}|"></span></li>
 </ul>
 
-<h2>2.5 연산</h2>
+<h2>3.5 연산</h2>
 <ul>
     <li>10 + 2 = <span th:text="10 + 2"></span></li>
     <li>1 gt 10 = <span th:text="1 gt 10"></span></li>
@@ -28,7 +28,7 @@
     <li>${nullData}?: _ = <span th:text="${nullData}?: _">데이터가 없습니다.(원래 글자)</span></li>
 </ul>
 
-<h2>2.5 속성 값 설정</h2>
+<h2>3.5 속성 값 설정</h2>
 <!-- th:속성명 : 기존 속성을 대체 / th:classappend : class 에 추가 / th:checked : false 면 속성 자체를 제거 -->
 <input type="text" name="mock" th:name="userA" value="원래 name 은 mock"/>
 <input type="text" class="text" th:classappend="large" value="class=text large"/>

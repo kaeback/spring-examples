@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 import java.time.ZoneId;
 
 /**
- * [교안 쿠키·세션 2.1~2.3] 쿠키와 세션 — 상태를 한 화면(Thymeleaf)에서 확인한다.
+ * [교안 쿠키·세션 2.2~3.4] 쿠키와 세션 — 상태를 한 화면(Thymeleaf)에서 확인한다.
  *
  * <p>HTTP 는 무상태(stateless)라 요청 간 상태를 기억하지 못한다.
  *  - 쿠키 : 서버가 Set-Cookie 로 내려보내면 브라우저가 저장했다가 요청마다 보냄. 클라이언트 저장 → 보안 취약.
@@ -85,7 +85,7 @@ public class CookieSessionController {
     }
 
     /**
-     * [교안 쿠키·세션 2.3] 세션 정보 — 서버가 세션을 어떻게 관리하는지 들여다본다.
+     * [교안 쿠키·세션 3.4] 세션 정보 — 서버가 세션을 어떻게 관리하는지 들여다본다.
      * getSession(false)로 '조회만' 하므로, 세션이 없으면 새로 만들지 않고 "세션 없음"을 보여 준다.
      */
     @GetMapping("/session/info")

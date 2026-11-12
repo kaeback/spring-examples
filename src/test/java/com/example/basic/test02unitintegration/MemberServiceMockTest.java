@@ -13,7 +13,7 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 
 /**
- * [테스트 2장 2.2] Mockito 목 — mock() 으로 만들고, when() 으로 응답을 정하고, verify() 로 호출을 확인한다.
+ * [테스트 2장 2.4] Mockito 목 — mock() 으로 만들고, when() 으로 응답을 정하고, verify() 로 호출을 확인한다.
  */
 class MemberServiceMockTest {
 

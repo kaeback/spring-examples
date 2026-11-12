@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 /**
- * [교안 2.5] 페이징 목록 화면 — Page 를 타임리프로 그리고, 페이지 번호를 '블록' 단위로 보여 준다.
+ * [교안 4.2] 페이징 목록 화면 — Page 를 타임리프로 그리고, 페이지 번호를 '블록' 단위로 보여 준다.
  *
  * <p>회원이 15명뿐이라 효과가 보이도록 한 페이지 2명, 한 블록 5페이지로 작게 잡았다.
  * 브라우저로 확인: GET /ex05/members/list , /ex05/members/list?page=5

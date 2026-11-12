@@ -1,7 +1,7 @@
 package com.example.basic.test01junit;
 
 /**
- * [테스트 1장 2.1] 테스트 대상 — 스프링과 무관한 순수 자바 클래스.
+ * [테스트 1장 2.2] 테스트 대상 — 스프링과 무관한 순수 자바 클래스.
  */
 public class Calculator {
 

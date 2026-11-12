@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 /**
- * [교안 2.1] 웹 계층 — 요청을 받아 서비스에 위임하고, 결과를 Model 에 담아 뷰를 고른다.
+ * [교안 2.4] 웹 계층 — 요청을 받아 서비스에 위임하고, 결과를 Model 에 담아 뷰를 고른다.
  */
 @Controller
 @RequestMapping("/ex00")

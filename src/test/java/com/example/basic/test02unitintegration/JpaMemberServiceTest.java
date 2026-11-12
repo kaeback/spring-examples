@@ -20,7 +20,7 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 /**
- * [테스트 2장 2.3] @Mock / @InjectMocks — web05 의 JPA 서비스를 DB 없이 단위 테스트한다.
+ * [테스트 2장 2.5] @Mock / @InjectMocks — web05 의 JPA 서비스를 DB 없이 단위 테스트한다.
  *
  * <p>MemberRepository 는 JpaRepository 를 상속한 인터페이스지만, 목으로 바꾸면 DB 도 스프링도 필요 없다.
  */

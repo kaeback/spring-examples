@@ -11,7 +11,7 @@ import java.util.Map;
 import java.util.stream.IntStream;
 
 /**
- * [교안 2.4] 페이징 — 페이지 번호를 OFFSET 으로 바꾸는 '계산'을 직접 해 본다.
+ * [교안 4.2] 페이징 — 페이지 번호를 OFFSET 으로 바꾸는 '계산'을 직접 해 본다.
  *
  * <p>DB 없이 메모리 리스트로 페이징 공식을 체험하는 예제다. 실제 SQL 은 다음과 같다:
  *   SELECT * FROM items ORDER BY id LIMIT {size} OFFSET {offset};   (MySQL/PostgreSQL/H2)

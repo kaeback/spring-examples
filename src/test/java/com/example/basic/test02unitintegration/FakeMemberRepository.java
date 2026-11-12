@@ -10,7 +10,7 @@ import java.util.Map;
 import java.util.Optional;
 
 /**
- * [테스트 2장 2.1] Fake — DB 대신 메모리에 저장하는 가짜 구현. 테스트만을 위해 src/test 에 둔다.
+ * [테스트 2장 2.3] Fake — DB 대신 메모리에 저장하는 가짜 구현. 테스트만을 위해 src/test 에 둔다.
  */
 class FakeMemberRepository implements MemberRepository {
 

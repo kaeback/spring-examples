@@ -9,7 +9,7 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicLong;
 
 /**
- * [교안 2.1] 데이터 접근 계층 — DB 대신 메모리(Map)에 저장하는 구현체.
+ * [교안 2.4] 데이터 접근 계층 — DB 대신 메모리(Map)에 저장하는 구현체.
  * '@Repository' 가 붙어 있어 컴포넌트 스캔으로 빈 등록된다. (빈 이름: memoryBookRepository)
  */
 @Repository

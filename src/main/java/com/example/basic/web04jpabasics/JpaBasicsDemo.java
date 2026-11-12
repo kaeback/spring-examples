@@ -9,7 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 /**
- * [교안 2.2~2.7] 영속성 컨텍스트의 핵심 동작을 EntityManager 로 직접 확인한다.
+ * [교안 2.3~5.2] 영속성 컨텍스트의 핵심 동작을 EntityManager 로 직접 확인한다.
  *
  * <p>메서드마다 @Transactional 을 따로 붙였다. 메서드 하나 = 트랜잭션 하나 = 영속성 컨텍스트 하나라서,
  * 메서드가 끝나면(커밋) 영속성 컨텍스트도 사라진다. 콘솔에서 SQL 이 '언제' 나가는지 로그 순서로 확인하자.
@@ -21,7 +21,7 @@ public class JpaBasicsDemo {
     @PersistenceContext     // 스프링이 현재 트랜잭션에 묶인 EntityManager 를 주입한다
     private EntityManager em;
 
-    /** [교안 2.2] 비영속 → 영속 → 삭제, 그리고 쓰기 지연. 키보드의 id 를 돌려준다. */
+    /** [교안 2.3] 비영속 → 영속 → 삭제, 그리고 쓰기 지연. 키보드의 id 를 돌려준다. */
     @Transactional
     public Long lifecycle() {
         Item keyboard = new Item("키보드", 30000);   // 비영속: 그냥 자바 객체
@@ -39,7 +39,7 @@ public class JpaBasicsDemo {
         return keyboard.getId();
     }
 
-    /** [교안 2.3] 1차 캐시와 동일성 보장 — 같은 id 를 두 번 찾아도 SELECT 는 한 번. */
+    /** [교안 2.4] 1차 캐시와 동일성 보장 — 같은 id 를 두 번 찾아도 SELECT 는 한 번. */
     @Transactional
     public void firstLevelCache(Long id) {
         log.info("첫 번째 find");
@@ -49,7 +49,7 @@ public class JpaBasicsDemo {
         log.info("find1 == find2 : {}", find1 == find2);   // 같은 객체 → true
     }
 
-    /** [교안 2.4] 변경 감지 — setter 만 호출하고 저장 메서드는 부르지 않는다. */
+    /** [교안 2.5] 변경 감지 — setter 만 호출하고 저장 메서드는 부르지 않는다. */
     @Transactional
     public void dirtyChecking(Long id) {
         Item item = em.find(Item.class, id);    // 영속 상태 + 스냅샷 보관
@@ -57,7 +57,7 @@ public class JpaBasicsDemo {
         log.info("가격을 35000 으로 바꿨다. 메서드가 끝나 커밋될 때 UPDATE 가 나간다.");
     }
 
-    /** [교안 2.5] JPQL 과 자동 flush — JPQL 실행 직전에 쌓인 변경이 먼저 DB 로 나간다. */
+    /** [교안 3.3] JPQL 과 자동 flush — JPQL 실행 직전에 쌓인 변경이 먼저 DB 로 나간다. */
     @Transactional
     public void jpql(Long id) {
         em.persist(new Item("모니터", 200000));
@@ -73,7 +73,7 @@ public class JpaBasicsDemo {
         result.forEach(i -> log.info("JPQL 결과: {} {}원", i.getName(), i.getPrice()));
     }
 
-    /** [교안 2.6] 준영속(detach)과 merge — 영속 상태에서만 변경 감지가 동작한다. */
+    /** [교안 4.2] 준영속(detach)과 merge — 영속 상태에서만 변경 감지가 동작한다. */
     @Transactional
     public void detachAndMerge(Long id) {
         Item item = em.find(Item.class, id);
@@ -88,7 +88,7 @@ public class JpaBasicsDemo {
         // 메서드가 끝나 커밋될 때 merged 의 변경(1000원)이 UPDATE 된다
     }
 
-    /** [교안 2.7] 연관관계의 주인 — FK 는 주인(Player.team) 쪽 값으로만 저장된다. */
+    /** [교안 5.2] 연관관계의 주인 — FK 는 주인(Player.team) 쪽 값으로만 저장된다. */
     @Transactional
     public void owner() {
         Team team = new Team("레드");

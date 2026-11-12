@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import java.util.List;
 
 /**
- * [교안 2.1~2.6] 시큐리티 실습 컨트롤러.
+ * [교안 2.2~3.5, 4.2~4.3] 시큐리티 실습 컨트롤러.
  *
  * <p>실습 순서:
  *  1) GET /ex10/filters  → /ex10 체인에 들어 있는 시큐리티 필터 목록
@@ -35,7 +35,7 @@ public class Ex10Controller {
     private final PasswordEncoder passwordEncoder;
     private final List<SecurityFilterChain> filterChains;
 
-    /** 홈 — sec: 네임스페이스로 로그인 상태를 보여 준다 (교안 2.6) */
+    /** 홈 — sec: 네임스페이스로 로그인 상태를 보여 준다 (교안 4.3) */
     @GetMapping
     public String home() {
         return "ex10/home";
@@ -47,7 +47,7 @@ public class Ex10Controller {
         return "ex10/login";
     }
 
-    /** [교안 2.1] 이 앱에 등록된 시큐리티 필터 체인과, 체인 안의 필터를 순서대로 보여 준다 */
+    /** [교안 2.2] 이 앱에 등록된 시큐리티 필터 체인과, 체인 안의 필터를 순서대로 보여 준다 */
     @GetMapping("/filters")
     @ResponseBody
     public String filters() {
@@ -64,7 +64,7 @@ public class Ex10Controller {
         return sb.toString();
     }
 
-    /** [교안 2.3] 같은 비밀번호를 두 번 암호화해 보고, matches 로 비교한다 */
+    /** [교안 3.4] 같은 비밀번호를 두 번 암호화해 보고, matches 로 비교한다 */
     @GetMapping("/encode")
     @ResponseBody
     public String encode(@RequestParam(defaultValue = "1234") String raw) {
@@ -77,7 +77,7 @@ public class Ex10Controller {
                 + "matches(\"0000\", hash1) : " + passwordEncoder.matches("0000", hash1);
     }
 
-    /** [교안 2.4] 로그인한 사용자 정보 꺼내기 — 두 방법 비교 */
+    /** [교안 3.5] 로그인한 사용자 정보 꺼내기 — 두 방법 비교 */
     @GetMapping("/me")
     @ResponseBody
     public String me(@AuthenticationPrincipal Ex10UserDetails user) {
@@ -91,14 +91,14 @@ public class Ex10Controller {
                 + ", 인증 객체=" + auth.getClass().getSimpleName();
     }
 
-    /** [교안 2.5] URL 규칙 hasRole("ADMIN") 으로 보호 */
+    /** [교안 4.2] URL 규칙 hasRole("ADMIN") 으로 보호 */
     @GetMapping("/admin/home")
     @ResponseBody
     public String adminHome() {
         return "관리자 페이지 (URL 규칙 hasRole('ADMIN') 통과)";
     }
 
-    /** [교안 2.5] 메서드에 @PreAuthorize 로 보호 */
+    /** [교안 4.2] 메서드에 @PreAuthorize 로 보호 */
     @GetMapping("/report")
     @PreAuthorize("hasRole('ADMIN')")
     @ResponseBody

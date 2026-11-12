@@ -16,7 +16,7 @@ import java.net.URI;
 import java.util.List;
 
 /**
- * [교안 2.2~2.4] 할 일 REST API — 화면(HTML) 대신 JSON 을 주고받는다.
+ * [교안 3.2~3.4] 할 일 REST API — 화면(HTML) 대신 JSON 을 주고받는다.
  *
  * <pre>
  * GET    /ex08/api/todos        목록        200
@@ -33,7 +33,7 @@ public class TodoApiController {
 
     private final TodoStore todoStore;
 
-    /** [교안 2.2] 목록 — List 를 반환하면 JSON 배열이 된다. 상태 코드는 기본값 200. */
+    /** [교안 3.2] 목록 — List 를 반환하면 JSON 배열이 된다. 상태 코드는 기본값 200. */
     @GetMapping
     public List<TodoResponse> list() {
         return todoStore.findAll().stream()
@@ -41,13 +41,13 @@ public class TodoApiController {
                 .toList();
     }
 
-    /** [교안 2.2] 단건 — URI 의 {id} 를 @PathVariable 로 받는다. */
+    /** [교안 3.2] 단건 — URI 의 {id} 를 @PathVariable 로 받는다. */
     @GetMapping("/{id}")
     public TodoResponse get(@PathVariable Long id) {
         return TodoResponse.from(findTodo(id));
     }
 
-    /** [교안 2.3] 생성 — JSON 본문을 @RequestBody 로 받고, 201 Created + Location 헤더로 응답한다. */
+    /** [교안 3.3] 생성 — JSON 본문을 @RequestBody 로 받고, 201 Created + Location 헤더로 응답한다. */
     @PostMapping
     public ResponseEntity<TodoResponse> create(@Valid @RequestBody TodoCreateRequest request) {
         Todo saved = todoStore.save(request.title());
@@ -55,7 +55,7 @@ public class TodoApiController {
         return ResponseEntity.created(location).body(TodoResponse.from(saved));
     }
 
-    /** [교안 2.4] 전체 수정 — 바뀐 자원을 200 으로 돌려준다. */
+    /** [교안 3.4] 전체 수정 — 바뀐 자원을 200 으로 돌려준다. */
     @PutMapping("/{id}")
     public TodoResponse update(@PathVariable Long id, @Valid @RequestBody TodoUpdateRequest request) {
         Todo todo = findTodo(id);
@@ -63,7 +63,7 @@ public class TodoApiController {
         return TodoResponse.from(todo);
     }
 
-    /** [교안 2.4] 삭제 — 돌려줄 본문이 없으므로 204 No Content. */
+    /** [교안 3.4] 삭제 — 돌려줄 본문이 없으므로 204 No Content. */
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> delete(@PathVariable Long id) {
         if (!todoStore.delete(id)) {

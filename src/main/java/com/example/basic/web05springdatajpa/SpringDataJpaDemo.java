@@ -14,7 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 /**
- * [교안 2.2~2.9] Spring Data JPA 기능을 콘솔에서 단계별로 확인하는 데모.
+ * [교안 2.4~7.2] Spring Data JPA 기능을 콘솔에서 단계별로 확인하는 데모.
  *
  * <p>각 메서드를 '따로' @Transactional 로 둔 이유: 메서드마다 새 트랜잭션 = 새 영속성 컨텍스트라,
  * N+1 같은 동작이 1차 캐시에 가려지지 않고 실제 SQL 로 드러난다.
@@ -28,7 +28,7 @@ public class SpringDataJpaDemo {
     private final OrderRepository orderRepository;
     private final MemberService memberService;
 
-    /** [교안 2.2] 회원 15명 + 주문 3건을 미리 저장한다. */
+    /** [교안 2.4] 회원 15명 + 주문 3건을 미리 저장한다. */
     @Transactional
     public void seed() {
         for (int i = 1; i <= 15; i++) {
@@ -43,7 +43,7 @@ public class SpringDataJpaDemo {
         log.info("seed 완료: 회원 {}명, 주문 3건", all.size());
     }
 
-    /** [교안 2.2] JpaRepository 가 기본으로 주는 메서드. */
+    /** [교안 2.4] JpaRepository 가 기본으로 주는 메서드. */
     @Transactional(readOnly = true)
     public void demoCrud() {
         log.info("count()        = {}", memberRepository.count());
@@ -52,7 +52,7 @@ public class SpringDataJpaDemo {
         log.info("existsById(15) = {}", memberRepository.existsById(15L));
     }
 
-    /** [교안 2.3] 쿼리 메소드 — 이름 규칙만으로 WHERE 절이 만들어진다. */
+    /** [교안 3.2] 쿼리 메소드 — 이름 규칙만으로 WHERE 절이 만들어진다. */
     @Transactional(readOnly = true)
     public void demoQueryMethods() {
         log.info("findByName('kim1')                     = {}건", memberRepository.findByName("kim1").size());
@@ -67,14 +67,14 @@ public class SpringDataJpaDemo {
                 memberRepository.findByNameContainingAndAgeBetween("kim", 28, 32).size());
     }
 
-    /** [교안 2.4] @Query — JPQL 을 직접 쓴다. */
+    /** [교안 3.3] @Query — JPQL 을 직접 쓴다. */
     @Transactional(readOnly = true)
     public void demoQuery() {
         List<Member> result = memberRepository.search("kim12", 30);
         log.info("@Query search('kim12', 30) = {}건", result.size());
     }
 
-    /** [교안 2.5] 페이징 — Page 객체가 전체 개수·페이지 수까지 알려 준다. */
+    /** [교안 4.2] 페이징 — Page 객체가 전체 개수·페이지 수까지 알려 준다. */
     @Transactional(readOnly = true)
     public void demoPaging() {
         Page<Member> page = memberService.getPage("kim", 0);   // 첫 페이지(0부터), 10개씩
@@ -86,7 +86,7 @@ public class SpringDataJpaDemo {
     }
 
     /**
-     * [교안 2.6] Slice — '더보기'. 전체 개수 COUNT 쿼리 없이 다음 페이지 존재 여부만 판단한다.
+     * [교안 4.3] Slice — '더보기'. 전체 개수 COUNT 쿼리 없이 다음 페이지 존재 여부만 판단한다.
      * USER 권한 회원을 5개씩 조회한다(콘솔에서 COUNT 쿼리가 '없는' 것을 확인).
      */
     @Transactional(readOnly = true)
@@ -96,7 +96,7 @@ public class SpringDataJpaDemo {
     }
 
     /**
-     * [교안 2.7] N+1 '문제' — LAZY 연관을 목록 순회에서 접근하면 추가 쿼리가 건수만큼 나간다.
+     * [교안 5.2] N+1 '문제' — LAZY 연관을 목록 순회에서 접근하면 추가 쿼리가 건수만큼 나간다.
      * 콘솔에서 SELECT 가 1(주문) + 3(회원) = 4번 나가는 것을 확인하자.
      */
     @Transactional(readOnly = true)
@@ -108,7 +108,7 @@ public class SpringDataJpaDemo {
         }
     }
 
-    /** [교안 2.7] N+1 해결책 ① fetch join — 조인 한 번으로 주문+회원을 함께 가져온다(SELECT 1번). */
+    /** [교안 5.2] N+1 해결책 ① fetch join — 조인 한 번으로 주문+회원을 함께 가져온다(SELECT 1번). */
     @Transactional(readOnly = true)
     public void demoFetchJoin() {
         List<Order> orders = orderRepository.findAllWithMember();   // 조인 SELECT 1번
@@ -117,7 +117,7 @@ public class SpringDataJpaDemo {
         }
     }
 
-    /** [교안 2.7] N+1 해결책 ② @EntityGraph — 어노테이션만으로 같은 효과(left join). */
+    /** [교안 5.2] N+1 해결책 ② @EntityGraph — 어노테이션만으로 같은 효과(left join). */
     @Transactional(readOnly = true)
     public void demoEntityGraph() {
         List<Order> orders = orderRepository.findAllWithMemberEntityGraph();
@@ -127,7 +127,7 @@ public class SpringDataJpaDemo {
     }
 
     /**
-     * [교안 2.8] 변경 감지 — save() 없이 이름이 바뀐다.
+     * [교안 6.2] 변경 감지 — save() 없이 이름이 바뀐다.
      * 이 메서드에는 @Transactional 을 붙이지 않았다. changeName() 이 자기 트랜잭션에서 커밋된 뒤
      * 다시 조회해야 UPDATE 가 실제로 DB 에 들어갔는지 확인할 수 있기 때문이다.
      */
@@ -140,7 +140,7 @@ public class SpringDataJpaDemo {
         log.info("다시 조회한 이름 = {}", changed);
     }
 
-    /** [교안 2.9] DTO 프로젝션 — 조회 시점에 바로 DTO 로 받는다. */
+    /** [교안 7.2] DTO 프로젝션 — 조회 시점에 바로 DTO 로 받는다. */
     @Transactional(readOnly = true)
     public void demoDto() {
         List<MemberDto> dtos = memberRepository.findMemberDto();   // @Query DTO 프로젝션
