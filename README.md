@@ -30,7 +30,7 @@
 6. **필터·인터셉터·예외** `web06` `/ex06` — 필터·인터셉터 로그 → 로그인 확인 비교 → 오류 페이지 → `@ExceptionHandler`·`@ControllerAdvice` → API 예외(JSON)
 7. **파일·페이징** `web07` `/ex07` — 업로드/다운로드·페이징 계산
 8. **REST API** `web08` `/ex08` — `@RestController` CRUD → `ResponseEntity` 상태 코드 → JSON 오류 → SSR vs `fetch`
-9. **테스트** `test01junit` · `test02unitintegration` (`./gradlew test`) — JUnit·AssertJ·생명주기 → Fake·Mockito → `@DataJpaTest`·`@WebMvcTest`·`@SpringBootTest`
+9. **테스트** `test01junit` · `test02unitintegration` · `test03tdd` (`./gradlew test`) — JUnit·AssertJ·생명주기 → Fake·Mockito → `@DataJpaTest`·`@WebMvcTest`·`@SpringBootTest` → TDD·`@ParameterizedTest`·`@Nested`·`Clock` 주입
 10. **Spring Security** `web10` `/ex10` — 의존성·`securityMatcher` → `SecurityFilterChain`(인가·폼 로그인·로그아웃) → `UserDetailsService`·BCrypt → `@AuthenticationPrincipal` → `hasRole`·`@PreAuthorize` → `sec:` 화면 → 로그인 실패 처리 → CSRF
 
 > 순서 포인트: **요청·응답 다음에 Thymeleaf**, **검증·쿠키·세션 다음에 JPA**를 배치했다.
@@ -52,6 +52,7 @@
 | `web08rest` | REST API | `@RestController`, `@RequestBody`+`@Valid`(record DTO), `ResponseEntity`(201+Location/204), `@RestControllerAdvice(basePackages)` JSON 오류 | **SSR vs fetch 비교** (`/ex08/ssr`, `/ex08/todos.html`) |
 | `test01junit` (main+test) | JUnit 기초 | `@Test`, Assertions·AssertJ, 생명주기, `@DisplayName` | `./gradlew test --tests "com.example.basic.test01junit.*"` |
 | `test02unitintegration` (test) | 단위/통합 테스트 | Fake·Mockito, `@DataJpaTest`, `@WebMvcTest`+jsonPath, `@SpringBootTest`+MockMvc | 시큐리티가 있어 `@WebMvcTest`에 `@Import(Ex10SecurityConfig…)` |
+| `test03tdd` (main+test) | 테스트 설계와 TDD | TDD로 만든 `PasswordValidator`, `@ParameterizedTest`(`@ValueSource`·`@CsvSource`·`@NullAndEmptySource`), `@Nested`+테스트 데이터 팩토리(`Cart`), `Clock` 주입(`OrderHours`) | `./gradlew test --tests "com.example.basic.test03tdd.*"` |
 | `web10security` | Spring Security | `SecurityFilterChain`(`securityMatcher("/ex10/**")`), 폼 로그인·로그아웃, `UserDetailsService`·`UserDetails`·BCrypt, `@AuthenticationPrincipal`, `hasRole`·`@PreAuthorize`, `sec:` 네임스페이스, 실패 핸들러, CSRF(켜 둠) | **잠긴 계정 → `LockedException`** (`locked`/1234) |
 
 ## 알아 두기
