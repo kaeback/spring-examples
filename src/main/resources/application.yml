@@ -1,6 +1,6 @@
 spring:
   application:
-    name: spring-basic
+    name: spring-examples
 
   # ── H2 인메모리 DB (web04 JPA 기초 · web05 Spring Data JPA 실습용) ──
   # 별도 DB 설치 없이 메모리에서 동작한다. 애플리케이션을 끄면 데이터는 사라진다.
@@ -44,4 +44,4 @@ logging:
 
 # web07 업로드 파일 저장 경로 (OS 임시 폴더 하위). 마지막 / 포함
 file:
-  dir: ${java.io.tmpdir}/spring-basic-upload/
+  dir: ${java.io.tmpdir}/spring-examples-upload/
